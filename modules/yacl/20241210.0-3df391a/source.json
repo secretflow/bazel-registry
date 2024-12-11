@@ -1,0 +1,8 @@
+{
+  "url": "https://github.com/secretflow/yacl/archive/3df391afd3dab5e176de17fa8f3196b799ee165e.tar.gz",
+  "integrity": "sha256-Z4KstAT7scq/QuWB8cqGy6zTxpKsYc55tMIFGXC2NVg=",
+  "strip_prefix": "yacl-3df391afd3dab5e176de17fa8f3196b799ee165e",
+  "overlay": {
+    "MODULE.bazel": "sha256-SGYJxGGymjCbq2mrCu/+J5agMhEF740K1mtBQWINK24="
+  }
+}

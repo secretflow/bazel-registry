@@ -5,6 +5,7 @@
         "github:secretflow/yacl"
     ],
     "versions": [
+        "20241210.0-3df391a",
         "20241206.0-b9dc6c3"
     ],
     "yanked_versions": {}
