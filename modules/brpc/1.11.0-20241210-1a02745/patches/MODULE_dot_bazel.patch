@@ -1,0 +1,29 @@
+diff --git a/MODULE.bazel b/MODULE.bazel
+index e53146ae..8c6a3a39 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -1,6 +1,6 @@
+ module(
+   name = 'brpc',
+-  version = '1.11.0',
++  version = '1.11.0-20241210-1a02745',
+   compatibility_level = 1,
+ )
+ 
+@@ -12,6 +12,7 @@ bazel_dep(name = 'protobuf', version = '27.3', repo_name = 'com_google_protobuf'
+ bazel_dep(name = 'gflags', version = '2.2.2', repo_name = 'com_github_gflags_gflags')
+ bazel_dep(name = 'glog', version = '0.5.0', repo_name = 'com_github_google_glog')
+ bazel_dep(name = 'platforms', version = '0.0.4')
++bazel_dep(name = "apple_support", version = "1.17.1")
+ bazel_dep(name = 'rules_cc', version = '0.0.1')
+ bazel_dep(name = 'rules_proto', version = '4.0.0')
+ bazel_dep(name = 'zlib', version = '1.2.13', repo_name = 'com_github_madler_zlib')
+@@ -21,6 +22,8 @@ bazel_dep(name = 'leveldb', version = '1.23', repo_name = 'com_github_google_lev
+ bazel_dep(name = 'openssl', version = '3.3.2')
+ bazel_dep(name = 'thrift', version = '0.21.0', repo_name = 'org_apache_thrift')
+ 
++bazel_dep(name = "tongsuo", version = "8.4.0", repo_name = "com_github_tongsuo_tongsuo")
++
+ # test only
+ bazel_dep(name = 'googletest', version = '1.14.0.bcr.1', repo_name = 'com_google_googletest', dev_dependency = True)
+ bazel_dep(name = 'hedron_compile_commands', dev_dependency = True)

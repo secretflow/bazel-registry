@@ -1,0 +1,159 @@
+diff --git a/BUILD.bazel b/BUILD.bazel
+index 0e2e66ed..b167df87 100644
+--- a/BUILD.bazel
++++ b/BUILD.bazel
+@@ -51,13 +51,17 @@ COPTS = [
+ }) + select({
+       "//bazel/config:brpc_with_debug_lock": ["-DBRPC_DEBUG_LOCK=1"],
+       "//conditions:default": ["-DBRPC_DEBUG_LOCK=0"],
++}) + select({
++    # Force linux aarch to use O1 build
++    "@bazel_tools//src/conditions:linux_aarch64": ["-O1"],
++    "//conditions:default": [""],
+ })
+ 
+ LINKOPTS = [
+     "-pthread",
+     "-ldl",
+ ] + select({
+-    "@bazel_tools//tools/osx:darwin_x86_64": [
++    "@bazel_tools//src/conditions:darwin": [
+         "-framework CoreFoundation",
+         "-framework CoreGraphics",
+         "-framework CoreData",
+@@ -226,7 +230,7 @@ BUTIL_SRCS = [
+     "src/butil/recordio.cc",
+     "src/butil/popen.cpp",
+ ] + select({
+-    "@bazel_tools//tools/osx:darwin_x86_64": [
++    "@bazel_tools//src/conditions:darwin": [
+         "src/butil/time/time_mac.cc",
+         "src/butil/mac/scoped_mach_port.cc",
+     ],
+@@ -341,10 +345,11 @@ cc_library(
+         "//bazel/config:brpc_with_glog": ["@com_github_google_glog//:glog"],
+         "//conditions:default": [],
+     }) + select({
+-        "@bazel_tools//tools/osx:darwin_x86_64": [":macos_lib"],
++        "@bazel_tools//src/conditions:darwin": [":macos_lib"],
+         "//conditions:default": [],
+     }) + select({
+         "//bazel/config:brpc_with_boringssl": ["@boringssl//:ssl", "@boringssl//:crypto"],
++        "//bazel/config:brpc_with_tongsuo": ["@com_github_tongsuo_tongsuo//:tongsuo"],
+         "//conditions:default": ["@openssl//:ssl", "@openssl//:crypto"],
+     }),
+ )
+diff --git a/bazel/config/BUILD.bazel b/bazel/config/BUILD.bazel
+index 10965747..524b92fe 100644
+--- a/bazel/config/BUILD.bazel
++++ b/bazel/config/BUILD.bazel
+@@ -110,6 +110,12 @@ config_setting(
+     visibility = ["//visibility:public"],
+ )
+ 
++config_setting(
++    name = "brpc_with_tongsuo",
++    define_values = {"BRPC_WITH_TONGSUO": "true"},
++    visibility = ["//visibility:public"],
++)
++
+ config_setting(
+     name = "brpc_with_debug_bthread_sche_safety",
+     define_values = {"with_debug_bthread_sche_safety": "true"},
+diff --git a/src/brpc/policy/http_rpc_protocol.cpp b/src/brpc/policy/http_rpc_protocol.cpp
+index 2dd18076..b1a41560 100644
+--- a/src/brpc/policy/http_rpc_protocol.cpp
++++ b/src/brpc/policy/http_rpc_protocol.cpp
+@@ -654,12 +654,12 @@ void SerializeHttpRequest(butil::IOBuf* /*not used*/,
+ 
+     Span* span = accessor.span();
+     if (span) {
+-        hreq.SetHeader("x-bd-trace-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->trace_id()));
+-        hreq.SetHeader("x-bd-span-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->span_id()));
+-        hreq.SetHeader("x-bd-parent-span-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->parent_span_id()));
++        hreq.SetHeader("x-b3-traceid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->trace_id()));
++        hreq.SetHeader("x-b3-spanid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->span_id()));
++        hreq.SetHeader("x-b3-parentspanid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->parent_span_id()));
+     }
+ }
+ 
+@@ -1403,22 +1403,22 @@ void ProcessHttpRequest(InputMessageBase *msg) {
+ 
+     Span* span = NULL;
+     const std::string& path = req_header.uri().path();
+-    const std::string* trace_id_str = req_header.GetHeader("x-bd-trace-id");
++    const std::string* trace_id_str = req_header.GetHeader("x-b3-traceid");
+     if (IsTraceable(trace_id_str)) {
+         uint64_t trace_id = 0;
+         if (trace_id_str) {
+-            trace_id = strtoull(trace_id_str->c_str(), NULL, 10);
++            trace_id = strtoull(trace_id_str->c_str(), NULL, 16);
+         }
+         uint64_t span_id = 0;
+-        const std::string* span_id_str = req_header.GetHeader("x-bd-span-id");
++        const std::string* span_id_str = req_header.GetHeader("x-b3-spanid");
+         if (span_id_str) {
+-            span_id = strtoull(span_id_str->c_str(), NULL, 10);
++            span_id = strtoull(span_id_str->c_str(), NULL, 16);
+         }
+         uint64_t parent_span_id = 0;
+         const std::string* parent_span_id_str =
+-            req_header.GetHeader("x-bd-parent-span-id");
++            req_header.GetHeader("x-b3-parentspanid");
+         if (parent_span_id_str) {
+-            parent_span_id = strtoull(parent_span_id_str->c_str(), NULL, 10);
++            parent_span_id = strtoull(parent_span_id_str->c_str(), NULL, 16);
+         }
+         span = Span::CreateServerSpan(
+             path, trace_id, span_id, parent_span_id, msg->base_real_us());
+diff --git a/src/brpc/versioned_ref_with_id.h b/src/brpc/versioned_ref_with_id.h
+index c78f019b..68dda744 100644
+--- a/src/brpc/versioned_ref_with_id.h
++++ b/src/brpc/versioned_ref_with_id.h
+@@ -617,7 +617,7 @@ template<typename T>
+ std::string VersionedRefWithId<T>::description() const {
+     std::string result;
+     result.reserve(128);
+-    butil::string_appendf(&result, "Socket{id=%" PRIu64, id());
++    butil::string_appendf(&result, "Socket{id=%d", (int)id());
+     result.append(WRAPPER_CALL(
+         OnDescription, const_cast<T*>(static_cast<const T*>(this))));
+     butil::string_appendf(&result, "} (0x%p)", this);
+diff --git a/src/bvar/default_variables.cpp b/src/bvar/default_variables.cpp
+index 011508aa..b8870935 100644
+--- a/src/bvar/default_variables.cpp
++++ b/src/bvar/default_variables.cpp
+@@ -110,8 +110,9 @@ static bool read_proc_status(ProcStat &stat) {
+         return -1;
+     }
+     const std::string& result = oss.str();
++    // macOS flags is actually a hex, ref https://github.com/apache/incubator-brpc/issues/1106
+     if (sscanf(result.c_str(), "%d %d %d %d"
+-                              "%d %u %ld %ld",
++                              "%d %x %ld %ld",
+                &stat.pid, &stat.ppid, &stat.pgrp, &stat.session,
+                &stat.tpgid, &stat.flags, &stat.priority, &stat.nice) != 8) {
+         PLOG(WARNING) << "Fail to sscanf";
+@@ -449,7 +450,6 @@ static bool read_proc_io(ProcIO* s) {
+     static pid_t pid = getpid();
+     rusage_info_current rusage;
+     if (proc_pid_rusage(pid, RUSAGE_INFO_CURRENT, (void**)&rusage) != 0) {
+-        PLOG(WARNING) << "Fail to proc_pid_rusage";
+         return false;
+     }
+     s->read_bytes = rusage.ri_diskio_bytesread;
+@@ -635,7 +635,7 @@ public:
+     bool operator()(rusage* stat) const {
+         const int rc = getrusage(RUSAGE_SELF, stat);
+         if (rc < 0) {
+-            PLOG(WARNING) << "Fail to getrusage";
++            // PLOG(WARNING) << "Fail to getrusage";
+             return false;
+         }
+         return true;
