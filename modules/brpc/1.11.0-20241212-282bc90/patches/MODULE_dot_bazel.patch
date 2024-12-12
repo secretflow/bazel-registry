@@ -1,16 +1,21 @@
 diff --git a/MODULE.bazel b/MODULE.bazel
-index e53146ae..8c6a3a39 100644
+index e53146ae..1c9d4a51 100644
 --- a/MODULE.bazel
 +++ b/MODULE.bazel
-@@ -1,6 +1,6 @@
+@@ -1,17 +1,18 @@
  module(
    name = 'brpc',
 -  version = '1.11.0',
-+  version = '1.11.0-20241210-1a02745',
++  version = '1.11.0-20241212-282bc90',
    compatibility_level = 1,
  )
  
-@@ -12,6 +12,7 @@ bazel_dep(name = 'protobuf', version = '27.3', repo_name = 'com_google_protobuf'
+ # --registry=https://bcr.bazel.build
+ bazel_dep(name = 'abseil-cpp', version = '20210324.2', repo_name = 'com_google_absl')
+ bazel_dep(name = 'bazel_skylib', version = '1.0.3')
+-bazel_dep(name = 'boringssl', version = '0.0.0-20211025-d4f1ab9')
++bazel_dep(name = 'boringssl', version = '0.0.0-20230215-5c22014')
+ bazel_dep(name = 'protobuf', version = '27.3', repo_name = 'com_google_protobuf')
  bazel_dep(name = 'gflags', version = '2.2.2', repo_name = 'com_github_gflags_gflags')
  bazel_dep(name = 'glog', version = '0.5.0', repo_name = 'com_github_google_glog')
  bazel_dep(name = 'platforms', version = '0.0.4')
