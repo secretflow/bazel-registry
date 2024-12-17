@@ -1,12 +1,11 @@
 {
-    "homepage": "https://github.com/secretflow/yacl",
-    "maintainers": [],
-    "repository": [
-        "github:secretflow/yacl"
-    ],
-    "versions": [
-        "20241210.0-3df391a",
-        "20241206.0-b9dc6c3"
-    ],
-    "yanked_versions": {}
+  "homepage": "https://github.com/secretflow/yacl",
+  "maintainers": [],
+  "repository": ["github:secretflow/yacl"],
+  "versions": [
+    "20241212.0-871832a",
+    "20241210.0-3df391a",
+    "20241206.0-b9dc6c3"
+  ],
+  "yanked_versions": {}
 }

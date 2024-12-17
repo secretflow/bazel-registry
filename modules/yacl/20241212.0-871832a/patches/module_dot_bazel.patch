@@ -1,0 +1,10 @@
+--- MODULE.bazel
++++ MODULE.bazel
+@@ -21,6 +21,7 @@
+ 
+ module(
+     name = "yacl",
++    version = "20241212.0-871832a",
+     compatibility_level = 1,
+ )
+ 
