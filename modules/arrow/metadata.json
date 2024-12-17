@@ -5,7 +5,8 @@
         "github:apache/arrow"
     ],
     "versions": [
-        "10.0.0"
+        "10.0.0",
+        "17.0.0"
     ],
     "yanked_versions": {}
 }

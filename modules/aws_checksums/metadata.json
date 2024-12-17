@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-checksums",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-checksums"
+    ],
+    "versions": [
+        "0.1.5"
+    ],
+    "yanked_versions": {}
+}

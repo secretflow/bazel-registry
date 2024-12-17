@@ -1,0 +1,10 @@
+{
+    "url": "https://github.com/JuliaStrings/utf8proc/archive/v2.7.0.tar.gz",
+    "integrity": "sha256-S7Eh4pcpPA/VXwj4Ovq2011I8K9OzAdSOtjsmaorEqE=",
+    "strip_prefix": "utf8proc-2.7.0",
+    "patches": {
+        "module.patch": "sha256-Wg2YVhVJXqTxEVSuflY6LN+pvDy7VoRmNMlYfvIoBbg=",
+        "add_build_file.patch": "sha256-bmhMYt13YdQ86ROzVCMJJjpIzUACTpyeGN+OZLj6fqc="
+    },
+    "patch_strip": 0
+}

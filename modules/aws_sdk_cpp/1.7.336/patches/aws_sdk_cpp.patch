@@ -1,0 +1,35 @@
+diff --git aws-cpp-sdk-core/include/aws/core/external/tinyxml2/tinyxml2.h aws-cpp-sdk-core/include/aws/core/external/tinyxml2/tinyxml2.h
+index 3721ed1f976..59beb8198e1 100644
+--- aws-cpp-sdk-core/include/aws/core/external/tinyxml2/tinyxml2.h
++++ aws-cpp-sdk-core/include/aws/core/external/tinyxml2/tinyxml2.h
+@@ -80,7 +80,7 @@ This file has been modified from its original version by Amazon:
+         #endif // AWS_CORE_EXPORTS
+     #endif // USE_IMPORT_EXPORT
+ #elif __GNUC__ >= 4
+-    #define TINYXML2_LIB __attribute__((visibility("default")))
++    #define TINYXML2_LIB 
+ #endif // _WIN32
+ 
+ #ifndef TINYXML2_LIB
+diff --git aws-cpp-sdk-core/source/client/AWSClient.cpp aws-cpp-sdk-core/source/client/AWSClient.cpp
+index 212174a97d1..75d3ef2e20c 100644
+--- aws-cpp-sdk-core/source/client/AWSClient.cpp
++++ aws-cpp-sdk-core/source/client/AWSClient.cpp
+@@ -212,7 +212,7 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
+     Aws::Monitoring::CoreMetricsCollection coreMetrics;
+     auto contexts = Aws::Monitoring::OnRequestStarted(this->GetServiceClientName(), request.GetServiceRequestName(), httpRequest);
+ 
+-    Aws::String invocationId = UUID::RandomUUID();
++    Aws::String invocationId = Aws::Utils::UUID::RandomUUID();
+     RequestInfo requestInfo;
+     requestInfo.attempt = 1;
+     requestInfo.maxAttempts = 0;
+@@ -305,7 +305,7 @@ HttpResponseOutcome AWSClient::AttemptExhaustively(const Aws::Http::URI& uri,
+     Aws::Monitoring::CoreMetricsCollection coreMetrics;
+     auto contexts = Aws::Monitoring::OnRequestStarted(this->GetServiceClientName(), requestName, httpRequest);
+ 
+-    Aws::String invocationId = UUID::RandomUUID();
++    Aws::String invocationId = Aws::Utils::UUID::RandomUUID();
+     RequestInfo requestInfo;
+     requestInfo.attempt = 1;
+     requestInfo.maxAttempts = 0;

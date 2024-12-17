@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/JuliaStrings/utf8proc",
+    "maintainers": [],
+    "repository": [
+        "github:JuliaStrings/utf8proc"
+    ],
+    "versions": [
+        "2.7.0"
+    ],
+    "yanked_versions": {}
+}

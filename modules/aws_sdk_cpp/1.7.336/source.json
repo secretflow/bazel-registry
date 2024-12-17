@@ -1,0 +1,10 @@
+{
+    "url": "https://github.com/aws/aws-sdk-cpp/archive/1.7.336.tar.gz",
+    "integrity": "sha256-dYF0+XiP7WzB4ma87LIL9zi9XvHD1kYTHJ7RXC1sVyA=",
+    "strip_prefix": "aws-sdk-cpp-1.7.336",
+    "patches": {
+        "aws_sdk_cpp.patch": "sha256-HvZ3n6Pk8kP+DwjemQLmv3ng5/CB/H9jhrYkoXIm1Fk=",
+        "add_build_file.patch": "sha256-023TfPr5lQv5Pm1IYdMGBCRQWAF/McKhfLJN1nIQZHw="
+    },
+    "patch_strip": 0
+}

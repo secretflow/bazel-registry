@@ -1,0 +1,10 @@
+{
+    "url": "https://github.com/awslabs/aws-c-event-stream/archive/v0.1.4.tar.gz",
+    "integrity": "sha256-MdiA0cho0/PfHh9LReVqxzckpNw0SdBNR/wHRvbwd7Y=",
+    "strip_prefix": "aws-c-event-stream-0.1.4",
+    "patches": {
+        "module.patch": "sha256-hlWQrWJRAXpwJA/B7J6RP0a/Y8C9B4loAy4kSvbwmdg=",
+        "add_build_file.patch": "sha256-0Cr2F5pVviapV96aLQnrRHVMoOj0Camc1OA37oHZsoc="
+    },
+    "patch_strip": 0
+}

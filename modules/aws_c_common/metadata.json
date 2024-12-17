@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-common",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-common"
+    ],
+    "versions": [
+        "0.4.29"
+    ],
+    "yanked_versions": {}
+}

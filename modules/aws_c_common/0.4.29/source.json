@@ -1,0 +1,10 @@
+{
+    "url": "https://github.com/awslabs/aws-c-common/archive/v0.4.29.tar.gz",
+    "integrity": "sha256-AcKlhVOjezqlkU2eC/e/FFB/9JN7xYcqZ4iSyiD8rh8=",
+    "strip_prefix": "aws-c-common-0.4.29",
+    "patches": {
+        "module.patch": "sha256-TCg/ni6o7a+luQ+w+5Rpf6mC/SKx0rjOOse2a08UymI=",
+        "add_build_file.patch": "sha256-1zoPR+Py0Lax7u4Z3e9LMcimsRTSqE1QnaSPHqUeXRE="
+    },
+    "patch_strip": 0
+}

@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-event-stream",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-event-stream"
+    ],
+    "versions": [
+        "0.1.4"
+    ],
+    "yanked_versions": {}
+}

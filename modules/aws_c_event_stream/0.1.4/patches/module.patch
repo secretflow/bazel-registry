@@ -1,0 +1,11 @@
+--- MODULE.bazel
++++ MODULE.bazel
+@@ -0,0 +1,8 @@
++module(
++    name = "aws_c_event_stream",
++    version = "0.1.4",
++    compatibility_level = 1,
++)
++
++bazel_dep(name = "aws_c_common", version = "0.4.29")
++bazel_dep(name = "aws_checksums", version = "0.1.5")

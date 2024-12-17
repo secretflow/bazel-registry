@@ -1,0 +1,9 @@
+module(
+    name = "aws_sdk_cpp",
+    version = "1.7.336",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "curl", version = "8.4.0")
+bazel_dep(name = "openssl", version = "3.3.2")
+bazel_dep(name = "aws_c_event_stream", version = "0.1.4")
