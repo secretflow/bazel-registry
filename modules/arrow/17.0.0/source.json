@@ -3,7 +3,7 @@
     "integrity": "sha256-g3lVTYnxnyyNtjYgchyrreYlQfR6TnBt+wpAHwWnE+8=",
     "strip_prefix": "arrow-apache-arrow-17.0.0",
     "patches": {
-        "arrow.patch": "sha256-z+kVm24+mmgWpyem81oYS1/jbReYiNfNusKEZlZkicU=",
+        "arrow.patch": "sha256-XcaIkl3Uc3bKZqTVOBqLkUuL9ApaSK2yRecUhzA83sE=",
         "module_dot_bazel.patch": "sha256-Q2OdFJX3X0hMZ+fLvqZ2amfUkv+e5LiLkUJgyN29Krw=",
         "add_build_file.patch": "sha256-QcwvWEb5NwTlmBGxTc/Nu9Rfiztx8Ky4Kc+g19bykKU="
     },
