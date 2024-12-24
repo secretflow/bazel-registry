@@ -3,6 +3,7 @@
   "maintainers": [],
   "repository": ["github:secretflow/yacl"],
   "versions": [
+    "0.4.5b10-nightly-20241224",
     "20241212.0-871832a",
     "20241210.0-3df391a",
     "20241206.0-b9dc6c3"
