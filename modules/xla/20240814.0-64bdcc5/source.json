@@ -4,8 +4,8 @@
     "integrity": "sha256-YJGLOgOR/p4L1QbJuQFwt7X6ZNBt5+wfTw41GjA6iPo=",
     "overlay": {
         "tsl.bzl": "sha256-5ehXXwoNfR/6NI3dajd7x6sLyOjr4gJPgtSAJxYJJXI=",
-        "workspace.bzl": "sha256-SqLjszH1HUwHEou5ZiL4OG581IQI4bkFHNhTitfrGZI=",
-        "MODULE.bazel": "sha256-bQFtm0iZUVEcDEhHqS5+EwBvpu2PDKj6rPENf+EE+ko="
+        "workspace.bzl": "sha256-yoJYfZH9lDw7v8l5bL0iG/ofu5LDYw9IVUoI8AlqFX8=",
+        "MODULE.bazel": "sha256-U0inicMf30MhXvpjPkcb8oUf9cUESsKn/QTaOjdGty0="
     },
     "patches": {
         "xla-non-hermetic-python.patch": "sha256-Q7QCEmHxaDFM5vVTqhjykTRTSvdhWsWqR+l7gsXEEWA=",
