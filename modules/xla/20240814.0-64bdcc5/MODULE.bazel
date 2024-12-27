@@ -36,7 +36,6 @@ use_repo(
     xla_workspace_ext,
     "ml_dtypes",
     "pybind11_bazel",
-    "eigen_archive",
     "snappy",
     "farmhash_archive",
     "rules_proto_grpc",
