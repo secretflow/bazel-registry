@@ -4,8 +4,8 @@
     "strip_prefix": "SEAL-4.1.1",
     "patches": {
         "seal.patch": "sha256-T/SkrY4H1mjkTDmIYvdu9YQd7OkUa8pagOu89eNt0WU=",
-        "add_build_file.patch": "sha256-ZsMoA12YS9ND87U9oDLy6tXiw047rBY4NeJ3gA+X3PU=",
-        "module_dot_bazel.patch": "sha256-UTdl8HlFHHcLaUBBujX/6VyZm70vZJDQVeaCDHuy2Co="
+        "add_build_file.patch": "sha256-paDMaJixGjNRv5Z336k9GGaxbs9hRx2K8KpAdcbvmKU=",
+        "module_dot_bazel.patch": "sha256-YR+vGy7RFg9lnAdKtWICDp3qEqtZIrfM/aNQxQDO9xo="
     },
     "patch_strip": 1
 }

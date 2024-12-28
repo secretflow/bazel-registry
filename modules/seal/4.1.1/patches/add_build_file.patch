@@ -1,90 +1,36 @@
 diff --git a/BUILD b/BUILD
 new file mode 100644
-index 00000000..ed898ae1
+index 00000000..75f887aa
 --- /dev/null
 +++ b/BUILD
-@@ -0,0 +1,5 @@
-+alias(
-+    name = "seal",
-+    actual = "//native/src:seal",
-+    visibility = ["//visibility:public"],
-+)
-diff --git a/native/src/BUILD b/native/src/BUILD
-new file mode 100644
-index 00000000..0eca6ae9
---- /dev/null
-+++ b/native/src/BUILD
-@@ -0,0 +1,73 @@
-+load("@rules_cc//cc:defs.bzl", "cc_library")
+@@ -0,0 +1,30 @@
++load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
 +
-+genrule(
-+    name = "gen_config_h",
-+    srcs = ["seal/util/config.h.in"],
-+    outs = ["seal/util/config.h"],
-+    cmd = ("sed " +
-+           "-e 's/@SEAL_VERSION_MAJOR@/4/g' " +
-+           "-e 's/@SEAL_VERSION_MINOR@/1/g' " +
-+           "-e 's/@SEAL_VERSION_PATCH@/1/g' " +
-+           "-e 's/@SEAL_VERSION@/4.1.1/g' " +
-+           "-e 's/#cmakedefine SEAL_DEBUG/#undef SEAL_DEBUG/g' " +
-+           # C++17 features
-+           "-e 's/#cmakedefine SEAL_USE_STD_BYTE/#define SEAL_USE_STD_BYTE/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_ALIGNED_ALLOC/#define SEAL_USE_ALIGNED_ALLOC/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_SHARED_MUTEX/#define SEAL_USE_SHARED_MUTEX/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_IF_CONSTEXPR/#define SEAL_USE_IF_CONSTEXPR/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_MAYBE_UNUSED/#define SEAL_USE_MAYBE_UNUSED/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_NODISCARD/#define SEAL_USE_NODISCARD/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_STD_FOR_EACH_N/#define SEAL_USE_STD_FOR_EACH_N/g' " +
-+           # Security
-+           "-e 's/#cmakedefine SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT/#undef SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_GAUSSIAN_NOISE/#define SEAL_USE_GAUSSIAN_NOISE/g' " +
-+           "-e 's/#cmakedefine SEAL_DEFAULT_PRNG @SEAL_DEFAULT_PRNG@/#define SEAL_DEFAULT_PRNG Blake2xb/g' " +
-+           "-e 's/#cmakedefine SEAL_AVOID_BRANCHING/#define SEAL_AVOID_BRANCHING/g' " +
-+           # Intrinsics
-+           "-e 's/#cmakedefine SEAL_USE_INTRIN/#define SEAL_USE_INTRIN/g' " +
-+           "-e 's/#cmakedefine SEAL_USE__UMUL128/#define SEAL_USE__UMUL128/g' " +
-+           "-e 's/#cmakedefine SEAL_USE__BITSCANREVERSE64/#define SEAL_USE__BITSCANREVERSE64/g' " +
-+           "-e 's/#cmakedefine SEAL_USE___BUILTIN_CLZLL/#define SEAL_USE___BUILTIN_CLZLL/g' " +
-+           "-e 's/#cmakedefine SEAL_USE___INT128/#define SEAL_USE___INT128/g' " +
-+           "-e 's/#cmakedefine SEAL_USE__ADDCARRY_U64/#define SEAL_USE__ADDCARRY_U64/g' " +
-+           "-e 's/#cmakedefine SEAL_USE__SUBBORROW_U64/#define SEAL_USE__SUBBORROW_U64/g' " +
-+           # Zero memory functions
-+           "-e 's/#cmakedefine SEAL_USE_EXPLICIT_BZERO/#define SEAL_USE_EXPLICIT_BZERO/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_EXPLICIT_MEMSET/#define SEAL_USE_EXPLICIT_MEMSET/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_MEMSET_S/#undef SEAL_USE_MEMSET_S/g' " +
-+           # Third-party dependencies
-+           "-e 's/#cmakedefine SEAL_USE_MSGSL/#define SEAL_USE_MSGSL/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_ZLIB/#define SEAL_USE_ZLIB/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_ZSTD/#define SEAL_USE_ZSTD/g' " +
-+           "-e 's/#cmakedefine SEAL_USE_INTEL_HEXL/#undef SEAL_USE_INTEL_HEXL/g' " +
-+           "$< > $@"),
++package(default_visibility = ["//visibility:public"])
++
++filegroup(
++    name = "all",
++    srcs = glob(["**"]),
 +)
 +
-+cc_library(
++cmake(
 +    name = "seal",
-+    srcs = glob(
-+        [
-+            "seal/*.cpp",
-+            "seal/util/*.cpp",
-+            "seal/c/*.cpp",
-+            "seal/util/*.c",
-+        ],
-+    ),
-+    hdrs = glob([
-+        "seal/*.h",
-+        "seal/util/*.h",
-+        "seal/c/*.h",
-+    ]) + [
-+        ":gen_config_h",
-+    ],
-+    cxxopts = [
-+        "-std=c++17",
-+    ],
-+    strip_include_prefix = "/native/src",
-+    visibility = ["//visibility:public"],
++    cache_entries = {
++        "SEAL_USE_MSGSL": "ON",
++        "SEAL_BUILD_DEPS": "OFF",
++        "SEAL_USE_ZLIB": "ON",
++        "SEAL_USE_INTEL_HEXL": "OFF",
++        "SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT": "OFF",  #NOTE(juhou) required by apsi
++        "SEAL_USE_ZSTD": "ON",
++        "CMAKE_INSTALL_LIBDIR": "lib",
++    },
++    generate_args = ["-GNinja"],
++    lib_source = "@seal//:all",
++    out_include_dir = "include/SEAL-4.1",
++    out_static_libs = ["libseal-4.1.a"],
 +    deps = [
-+        "@gsl",
-+        "@zlib",
 +        "@zstd",
++        "@microsoft_gsl//:Microsoft.GSL",
++        "@zlib",
 +    ],
 +)

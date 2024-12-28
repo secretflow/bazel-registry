@@ -1,0 +1,27 @@
+diff --git a/BUILD b/BUILD
+new file mode 100644
+index 0000000..252ab7c
+--- /dev/null
++++ b/BUILD
+@@ -0,0 +1,21 @@
++load("@rules_foreign_cc//foreign_cc:defs.bzl", "cmake")
++
++package(default_visibility = ["//visibility:public"])
++
++filegroup(
++    name = "all_srcs",
++    srcs = glob(["**"]),
++)
++
++cmake(
++    name = "Microsoft.GSL",
++    cache_entries = {
++        "GSL_INSTALL": "ON",
++        "GSL_STANDALONE_PROJECT": "OFF",
++        "GSL_TEST": "OFF",
++    },
++    generate_args = ["-GNinja"],
++    lib_source = ":all_srcs",
++    out_headers_only = True,
++    out_include_dir = "include",
++)
