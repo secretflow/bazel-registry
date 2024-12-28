@@ -14,4 +14,4 @@ tasks:
     platform: ${{ platform }}
     bazel: ${{ bazel }}
     build_targets:
-    - '@log4cplus@log4cpp//:log4cpp'
+    - '@log4cplus//:log4cplus'
