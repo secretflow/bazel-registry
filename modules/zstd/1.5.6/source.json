@@ -3,7 +3,7 @@
     "integrity": "sha256-jCngbPQqrMHq/EB3ri7Gxvy5amJhV+BZPV6Co0/UA8E=",
     "strip_prefix": "zstd-1.5.6",
     "overlay": {
-        "BUILD.bazel": "sha256-A/n+pmJoWd55PlPUv3fShsou8EV27R2McIvvoYP9feg=",
+        "BUILD.bazel": "sha256-UJKcZcAp8K/OS7sHG5dLxE7VX8425bGfCP1VohD+jw0=",
         "MODULE.bazel": "sha256-uDi8dlZDoLMLwCkhc/UU1h7qZ6Uh9wV5wbw4Vv0qC0Q="
     },
     "patch_strip": 0
