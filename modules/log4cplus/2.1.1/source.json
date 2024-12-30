@@ -2,9 +2,9 @@
     "url": "https://github.com/log4cplus/log4cplus/releases/download/REL_2_1_1/log4cplus-2.1.1.tar.gz",
     "integrity": "sha256-QtxDWSiRf9L4RwRsSgxghrKvI2ZNGYx/wbmCwL/mAME=",
     "strip_prefix": "log4cplus-2.1.1",
-    "patches": {
-        "add_build_file.patch": "sha256-HS+Sb7ozfRXrpeEVphbgoir6RiDW4vtBLV8PoE7Kkfs=",
-        "module_dot_bazel.patch": "sha256-rCYAIPYzac8LduJz8xyfDf6lRyiRrfpyKMhelPIqQeM="
+    "overlay": {
+        "BUILD.bazel": "sha256-Pul/rbI/VLDv5H3S5qeQHhwWNZSNiagko7+4RtFujSo=",
+        "MODULE.bazel": "sha256-doYv9YaCAPebDVumQf6eqy26NTJLTsIVWVclaBSDSMw="
     },
     "patch_strip": 0
 }

@@ -1,12 +1,6 @@
 {
   "homepage": "https://github.com/facebook/zstd",
-  "maintainers": [
-      {
-          "email": "aaronyu@google.com",
-          "github": "afq984",
-          "name": "Li-Yu Yu"
-      }
-  ],
+  "maintainers": [],
   "repository": [
       "github:facebook/zstd"
   ],
