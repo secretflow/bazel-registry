@@ -6,7 +6,7 @@
         "seal.patch": "sha256-T/SkrY4H1mjkTDmIYvdu9YQd7OkUa8pagOu89eNt0WU="
     },
     "overlay": {
-        "BUILD.bazel": "sha256-5ZKYedsXTpYfrTzUywLEXVzPw8MK1/6996K8/YYTvN4=",
+        "BUILD.bazel": "sha256-OI7F7KgGK8n4zNcjJgVMbNzOtHLJ5C1iPpj8CxDWfxc=",
         "MODULE.bazel": "sha256-rtnRLn/TFAd5Io6vcA5+Hv5x6AWU3VifQzpg9Ajg/Ag="
     },
     "patch_strip": 1
