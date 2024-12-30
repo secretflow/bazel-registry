@@ -32,7 +32,7 @@ cmake(
         "CMAKE_INSTALL_LIBDIR": "lib",
     },
     generate_args = ["-GNinja"],
-    lib_source = "@zstd//:all",
+    lib_source = ":all",
     out_include_dir = "include/",
     out_static_libs = ["libzstd.a"],
     working_directory = "build/cmake",

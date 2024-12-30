@@ -37,7 +37,7 @@ cmake(
         # "SEAL_USE_INTEL_HEXL": "ON",
     },
     generate_args = ["-GNinja"],
-    lib_source = "@seal//:all",
+    lib_source = ":all",
     out_include_dir = "include/SEAL-4.1",
     out_static_libs = ["libseal-4.1.a"],
     deps = [
