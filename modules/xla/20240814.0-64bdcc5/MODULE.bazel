@@ -20,6 +20,7 @@ bazel_dep(name = "nsync", version = "1.29.2")
 bazel_dep(name = "llvm-raw", version = "20240809.0-35f55f5")
 bazel_dep(name = "protobuf", version = "21.7", repo_name = "com_google_protobuf")
 bazel_dep(name = "abseil-cpp", version = "20240722.0", repo_name = "com_google_absl")
+bazel_dep(name = "eigen", version = "3.4.90-20230801-66e8f3", repo_name = "eigen_archive")
 
 llvm = use_extension("@llvm-raw//utils/bazel:extension.bzl", "llvm")
 llvm.configure(
@@ -35,7 +36,6 @@ use_repo(
     xla_workspace_ext,
     "ml_dtypes",
     "pybind11_bazel",
-    "eigen_archive",
     "snappy",
     "farmhash_archive",
     "rules_proto_grpc",

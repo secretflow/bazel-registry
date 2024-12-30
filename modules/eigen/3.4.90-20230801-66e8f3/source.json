@@ -2,8 +2,7 @@
     "url": "https://gitlab.com/libeigen/eigen/-/archive/66e8f38891841bf88ee976a316c0c78a52f0cee/eigen-66e8f38891841bf88ee976a316c0c78a52f0cee5.tar.gz",
     "integrity": "sha256-MoNm6jneGZBnb3syH9xG1c6J0GwS9B7p+vS9igCnS/g=",
     "strip_prefix": "eigen-66e8f38891841bf88ee976a316c0c78a52f0cee-66e8f38891841bf88ee976a316c0c78a52f0cee5",
-    "patches": {
-        "add_build_file.patch": "sha256-kMUT1s9E2kF0NKjnwLcWdc9FN/ST17sUP1+vihLh6x4="
-    },
-    "patch_strip": 0
+    "overlay": {
+        "BUILD.bazel": "sha256-IG3rm6ep5J6iNlCSoc9CSfnZ+0ho3ypVVorAX2yW4Gc="
+    }
 }

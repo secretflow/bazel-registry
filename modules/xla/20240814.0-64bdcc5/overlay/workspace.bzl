@@ -1,7 +1,6 @@
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 load("@tsl//third_party:repo.bzl", "tf_http_archive", "tf_mirror_urls")
 load("@tsl//third_party/absl:workspace.bzl", com_google_absl = "repo")
-load("@tsl//third_party/eigen3:workspace.bzl", eigen_archive = "repo")
 load("@tsl//third_party/gpus:cuda_configure.bzl", "cuda_configure")
 load("@tsl//third_party/gpus:rocm_configure.bzl", "rocm_configure")
 load("@tsl//third_party/py/ml_dtypes:workspace.bzl", ml_dtypes = "repo")
@@ -16,7 +15,6 @@ def _xla_workspace_impl(mctx):
     tensorrt_configure(name = "local_config_tensorrt")
     ml_dtypes()
     pybind11_bazel()
-    eigen_archive()
     com_google_absl()
     tf_http_archive(
         name = "farmhash_archive",

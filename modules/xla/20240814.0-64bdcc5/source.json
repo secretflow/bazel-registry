@@ -3,13 +3,13 @@
     "url": "https://github.com/openxla/xla/archive/64bdcc53a1b24abf19b1fe598e6f9b0fe6454470.tar.gz",
     "integrity": "sha256-YJGLOgOR/p4L1QbJuQFwt7X6ZNBt5+wfTw41GjA6iPo=",
     "overlay": {
-        "tsl.bzl": "",
-        "workspace.bzl": "",
-        "MODULE.bazel": ""
+        "tsl.bzl": "sha256-5ehXXwoNfR/6NI3dajd7x6sLyOjr4gJPgtSAJxYJJXI=",
+        "workspace.bzl": "sha256-yoJYfZH9lDw7v8l5bL0iG/ofu5LDYw9IVUoI8AlqFX8=",
+        "MODULE.bazel": "sha256-U0inicMf30MhXvpjPkcb8oUf9cUESsKn/QTaOjdGty0="
     },
     "patches": {
-        "xla-non-hermetic-python.patch": "",
-        "xla-protobuf.patch": ""
+        "xla-non-hermetic-python.patch": "sha256-Q7QCEmHxaDFM5vVTqhjykTRTSvdhWsWqR+l7gsXEEWA=",
+        "xla-protobuf.patch": "sha256-G0ENqVo7pX6DPjNEPHh80rJ8ra8UfMEpjFfA5ptPXCs="
     },
     "patch_strip": 1
 }
