@@ -14,4 +14,4 @@ tasks:
     platform: ${{ platform }}
     bazel: ${{ bazel }}
     build_targets:
-    - '@microsoft_gsl//:Microsoft.GSL'
+    - '@gsl//:Microsoft.GSL'
