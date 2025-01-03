@@ -28,6 +28,7 @@
 +    name = "utf8proc",
 +    cache_entries = {
 +        "BUILD_STATIC_LIBS": "ON",
++        "CMAKE_INSTALL_LIBDIR": "lib",  # work for alios
 +    },
 +    lib_source = ":all_srcs",
 +    out_static_libs = [
