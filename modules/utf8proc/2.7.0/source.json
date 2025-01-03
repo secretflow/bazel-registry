@@ -4,7 +4,7 @@
     "strip_prefix": "utf8proc-2.7.0",
     "patch_strip": 0,
     "overlay": {
-        "MODULE.bazel": "sha256-uDi8dlZDoLMLwCkhc/UU1h7qZ6Uh9wV5wbw4Vv0qC0Q=",
+        "MODULE.bazel": "sha256-MtWj7VaicUnax5j8ZtOJVHBVtEPQ158yX7xq3JVL3ao=",
         "BUILD.bazel": "sha256-LlJWy23zOTSfEaoYpMZovjbMIGRlSA8WCgzslBi1ut0="
     }
 }
