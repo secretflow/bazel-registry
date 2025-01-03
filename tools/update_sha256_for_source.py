@@ -58,7 +58,7 @@ def main():
 
     parent_path = os.path.dirname(file_path)
     # update overlay
-    check_and_update_dir(content, os.path.join(parent_path, "overlays"))
+    check_and_update_dir(content, os.path.join(parent_path, "overlay"))
 
     # update patch
     check_and_update_dir(content, os.path.join(parent_path, "patches"))
