@@ -7,9 +7,6 @@
         "module.patch": "sha256-Wg2YVhVJXqTxEVSuflY6LN+pvDy7VoRmNMlYfvIoBbg="
     },
     "patch_strip": 0,
-    "overlays": {
-        "BUILD.bazel": "sha256-LlJWy23zOTSfEaoYpMZovjbMIGRlSA8WCgzslBi1ut0="
-    },
     "overlay": {
         "BUILD.bazel": "sha256-LlJWy23zOTSfEaoYpMZovjbMIGRlSA8WCgzslBi1ut0="
     }
