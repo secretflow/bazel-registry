@@ -55,9 +55,9 @@ EIGEN_MPL2_HEADER_FILES = glob(
 )
 
 alias(
-  name = 'eigen3',
-  actual = 'eigen',
-  visibility = ['//visibility:public'],
+    name = "eigen3",
+    actual = "eigen",
+    visibility = ["//visibility:public"],
 )
 
 cc_library(
@@ -77,6 +77,11 @@ cc_library(
     ],
     includes = ["."],
     visibility = ["//visibility:public"],
+    deps = select({
+        "@bazel_tools//src/conditions:darwin_x86_64": ["@macos_omp_x64//:openmp"],
+        "@bazel_tools//src/conditions:darwin_arm64": ["@macos_omp_arm64//:openmp"],
+        "//conditions:default": [],
+    }),
 )
 
 filegroup(

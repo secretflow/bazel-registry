@@ -3,6 +3,11 @@
     "integrity": "sha256-MoNm6jneGZBnb3syH9xG1c6J0GwS9B7p+vS9igCnS/g=",
     "strip_prefix": "eigen-66e8f38891841bf88ee976a316c0c78a52f0cee-66e8f38891841bf88ee976a316c0c78a52f0cee5",
     "overlay": {
-        "BUILD.bazel": "sha256-IG3rm6ep5J6iNlCSoc9CSfnZ+0ho3ypVVorAX2yW4Gc="
-    }
+        "BUILD.bazel": "sha256-Ngg93Q06eXMdhfbHXJG7viFkiNm/hbWIctEfQNMCrA8=",
+        "local_openmp_macos.BUILD": "sha256-o7ZZ0fBkPYL4wz570H86B4nN9+ufxFmdvC20mEzt69Y="
+    },
+    "patches": {
+        "omp.patch": "sha256-+2hH29tOxbbIh2qgeki+V1ebaKdfalW623CPtdVXGSE="
+    },
+    "patch_strip": 1
 }

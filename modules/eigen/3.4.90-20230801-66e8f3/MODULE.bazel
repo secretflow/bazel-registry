@@ -3,5 +3,20 @@ module(
     version = "3.4.90-20230801-66e8f3",
     compatibility_level = 1,
 )
+
 bazel_dep(name = "rules_cc", version = "0.0.13")
 bazel_dep(name = "platforms", version = "0.0.8")
+
+new_local_repository = use_repo_rule("@bazel_tools//tools/build_defs/repo:local.bzl", "new_local_repository")
+
+new_local_repository(
+    name = "macos_omp_x64",
+    build_file = "@eigen//:local_openmp_macos.BUILD",
+    path = "/usr/local/opt/libomp",
+)
+
+new_local_repository(
+    name = "macos_omp_arm64",
+    build_file = "@eigen//:local_openmp_macos.BUILD",
+    path = "/opt/homebrew/opt/libomp/",
+)

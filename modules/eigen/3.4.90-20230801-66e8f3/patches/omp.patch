@@ -1,0 +1,17 @@
+diff --git a/Eigen/Core b/Eigen/Core
+index 93d47890a..220b140b4 100644
+--- a/Eigen/Core
++++ b/Eigen/Core
+@@ -68,7 +68,11 @@
+
+ #ifdef EIGEN_HAS_OPENMP
+ #include <atomic>
+-#include <omp.h>
++#ifdef __APPLE__
++  #include "omp.h"
++#else
++  #include <omp.h>
++#endif // __APPLE__
+ #endif
+
+ // MSVC for windows mobile does not have the errno.h file
