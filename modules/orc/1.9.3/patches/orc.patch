@@ -1,0 +1,27 @@
+diff --git a/proto/orc_proto.proto b/c++/src/orc_proto.proto
+similarity index 100%
+rename from proto/orc_proto.proto
+rename to c++/src/orc_proto.proto
+diff --git a/c++/src/wrap/orc-proto-wrapper.cc b/c++/src/wrap/orc-proto-wrapper.cc
+index 2c9c927c3..637365983 100644
+--- a/c++/src/wrap/orc-proto-wrapper.cc
++++ b/c++/src/wrap/orc-proto-wrapper.cc
+@@ -47,4 +47,4 @@ DIAGNOSTIC_IGNORE(4146)  // unary minus operator applied to unsigned type, resul
+ DIAGNOSTIC_IGNORE(4800)  // forcing value to bool 'true' or 'false'
+ #endif
+ 
+-#include "orc_proto.pb.cc"
++// #include "orc_proto.pb.cc"
+diff --git a/c++/src/wrap/snappy-wrapper.h b/c++/src/wrap/snappy-wrapper.h
+index 18166f720..52ee4bed1 100644
+--- a/c++/src/wrap/snappy-wrapper.h
++++ b/c++/src/wrap/snappy-wrapper.h
+@@ -28,7 +28,7 @@ DIAGNOSTIC_PUSH
+ DIAGNOSTIC_IGNORE("-Wreserved-id-macro")
+ #endif
+ 
+-#include <snappy.h>
++#include "snappy.h"
+ 
+ DIAGNOSTIC_POP
+ 

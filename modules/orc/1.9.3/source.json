@@ -1,0 +1,11 @@
+{
+    "url": "https://github.com/apache/orc/archive/refs/tags/v1.9.3.tar.gz",
+    "integrity": "sha256-MDf9MkoXmU9VFGquNCUxxKND/cGsaYxcbw9benXs5QE=",
+    "strip_prefix": "orc-1.9.3",
+    "patches": {
+        "add_build_file.patch": "sha256-rzj1SPqOn3IY3sdRU0L2PbfSXAEBcnib3+KWNWbbUa4=",
+        "module_dot_bazel.patch": "sha256-1In/AxthsO35ZvF1Gugk4YTWe7Wg1lvsc1pwNVBkeGc=",
+        "orc.patch": "sha256-mnVoL28n8UR/nDwa7vWA3VrtvdjwoYhapUSnhHV5H3Y="
+    },
+    "patch_strip": 1
+}

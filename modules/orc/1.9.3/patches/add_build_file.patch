@@ -1,0 +1,105 @@
+diff --git a/BUILD.bazel b/BUILD.bazel
+new file mode 100644
+index 000000000..94010ae8a
+--- /dev/null
++++ b/BUILD.bazel
+@@ -0,0 +1,99 @@
++# Copyright 2024 Ant Group Co., Ltd.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#   http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++package(default_visibility = ["//visibility:public"])
++
++licenses(["notice"])  # Apache 2.0
++
++exports_files(["LICENSE.txt"])
++
++genrule(
++    name = "Adaptor_h",
++    srcs = ["c++/src/Adaptor.hh.in"],
++    outs = ["c++/src/Adaptor.hh"],
++    cmd = ("sed " +
++           "-e 's/cmakedefine HAS_PREAD/define HAS_PREAD/g' " +
++           "-e 's/cmakedefine HAS_STRPTIME/define HAS_STRPTIME/g' " +
++           "-e 's/cmakedefine HAS_DIAGNOSTIC_PUSH/define HAS_DIAGNOSTIC_PUSH/g' " +
++           "-e 's/cmakedefine HAS_DOUBLE_TO_STRING/define HAS_DOUBLE_TO_STRING/g' " +
++           "-e 's/cmakedefine HAS_INT64_TO_STRING/define HAS_INT64_TO_STRING/g' " +
++           "-e 's/cmakedefine HAS_PRE_1970/define HAS_PRE_1970/g' " +
++           "-e 's/cmakedefine HAS_POST_2038/define HAS_POST_2038/g' " +
++           "-e 's/cmakedefine HAS_STD_ISNAN/define HAS_STD_ISNAN/g' " +
++           "-e 's/cmakedefine HAS_BUILTIN_OVERFLOW_CHECK/define HAS_BUILTIN_OVERFLOW_CHECK/g' " +
++           "-e 's/cmakedefine NEEDS_Z_PREFIX/undef NEEDS_Z_PREFIX/g' " +
++           "$< >$@"),
++)
++
++genrule(
++    name = "orc-config",
++    srcs = ["c++/include/orc/orc-config.hh.in"],
++    outs = ["c++/include/orc/orc-config.hh"],
++    cmd = ("sed " +
++           "-e 's/@ORC_VERSION@/1.9.0/g' " +
++           "-e 's/cmakedefine ORC_CXX_HAS_CSTDINT/undef ORC_CXX_HAS_CSTDINT/g' " +
++           "$< >$@"),
++)
++
++proto_library(
++    name = "orc_proto",
++    srcs = ["c++/src/orc_proto.proto"],
++)
++
++cc_proto_library(
++    name = "orc_cc_proto",
++    deps = [":orc_proto"],
++)
++
++cc_library(
++    name = "orc",
++    srcs = glob(
++        [
++            "c++/src/*.cc",
++            "c++/src/*.hh",
++            "c++/src/sargs/*.cc",
++            "c++/src/sargs/*.hh",
++            "c++/src/io/*.cc",
++            "c++/src/io/*.hh",
++            "c++/src/wrap/*.cc",
++            "c++/src/wrap/*.hh",
++            "c++/src/wrap/*.h",
++            "c++/include/orc/*.hh",
++            "c++/include/orc/**/*.hh",
++        ],
++        exclude = [
++            "c++/src/OrcHdfsFile.cc",
++            "c++/src/BpackingAvx512.cc",
++            "c++/src/wrap/gmock.h",
++            "c++/src/wrap/gtest-wrapper.h"
++        ],
++    ),
++    hdrs = [
++        # declare header from above genrule
++        "c++/include/orc/orc-config.hh",
++        "c++/src/Adaptor.hh",
++    ],
++    includes = [
++        "c++/include",
++        "c++/src",
++    ],
++    deps = [
++        ":orc_cc_proto",
++        "@zstd",
++        "@snappy",
++        "@lz4",
++        "@protobuf",
++        "@zlib",
++    ],
++)

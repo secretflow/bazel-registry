@@ -1,0 +1,11 @@
+{
+    "url": "https://github.com/apache/arrow/archive/apache-arrow-14.0.2.tar.gz",
+    "integrity": "sha256-B8202meVSHyABSayhlwVCrfYC4USoxeT5qcUfIzNJw8=",
+    "strip_prefix": "arrow-apache-arrow-14.0.2",
+    "patches": {
+        "arrow.patch": "sha256-G+BtGHmUOZ6XXGq+uURsmikiuu6Gng11HONu33XaCLA=",
+        "module_dot_bazel.patch": "sha256-P+yvuSjOdABNYZb3owV5Rd7gQjfZH25HhblEnZJFK4s=",
+        "add_build_file.patch": "sha256-uY2dGF9X7OCH6EaB6lKvSDxEBYfu+72IT3UHHOWTgis="
+    },
+    "patch_strip": 1
+}
