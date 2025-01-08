@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/apache/orc",
+    "maintainers": [],
+    "repository": [
+        "github:apache/orc"
+    ],
+    "versions": [
+        "1.9.3"
+    ],
+    "yanked_versions": {}
+}
