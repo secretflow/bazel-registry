@@ -12,3 +12,11 @@ common --registry=https://raw.githubusercontent.com/secretflow/bazel-registry/ma
 
 
 
+## Tools Usage
+
+### Update module integrity
+
+```
+# update integrity of module `module_name`
+$ bazel run //tools:update_integrity -- <module_name>
+```
