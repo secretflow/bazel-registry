@@ -1,0 +1,14 @@
+===================================================================
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -13,9 +13,9 @@
+ # limitations under the License.
+ 
+ module(
+     name = "kuscia",
+-    version = "v0.13.0b1",
++    version = "0.13.0b1",
+     compatibility_level = 1,
+ )
+ 
+ bazel_dep(name = "protobuf", version = "27.3", repo_name = "com_google_protobuf")

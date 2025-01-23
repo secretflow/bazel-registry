@@ -1,0 +1,9 @@
+{
+    "integrity": "sha256-C9zbZQ8OMKinX6O805QDjD8qOW5lc7Q3KXdCkGf06HQ=",
+    "strip_prefix": "kuscia-0.13.0b1",
+    "url": "https://github.com/secretflow/kuscia/archive/refs/tags/v0.13.0b1.tar.gz",
+    "patches": {
+        "module_dot_bazel_version.patch": "sha256-uVYM7VwQWvMxJUkJotXdQr7ScEEV3FHwRAQlTQls8s8="
+    },
+    "patch_strip": 1
+}
