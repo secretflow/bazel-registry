@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/secretflow/dataproxy",
+    "maintainers": [],
+    "repository": [
+        "github:secretflow/dataproxy"
+    ],
+    "versions": [
+        "0.3.0b1"
+    ],
+    "yanked_versions": {}
+}
