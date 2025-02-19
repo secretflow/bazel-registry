@@ -5,7 +5,8 @@
         "github:secretflow/kuscia"
     ],
     "versions": [
-        "0.13.0b1"
+        "0.13.0b1",
+        "0.14.0b0"
     ],
     "yanked_versions": {}
 }
