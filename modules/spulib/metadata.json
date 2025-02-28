@@ -5,7 +5,8 @@
         "github:secretflow/spu"
     ],
     "versions": [
-        "0.9.4.dev20250123"
+        "0.9.4.dev20250123",
+        "0.9.4.dev20250227"
     ],
     "yanked_versions": {}
 }
