@@ -5,7 +5,8 @@
         "github:intel/cryptography-primitives"
     ],
     "versions": [
-        "2021.8"
+        "2021.8",
+        "2021.8.2"
     ],
     "yanked_versions": {}
 }
