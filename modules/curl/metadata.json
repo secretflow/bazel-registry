@@ -5,7 +5,7 @@
         "github:curl/curl"
     ],
     "versions": [
-        "8.4.0"
+        "8.4.0.bcr.2"
     ],
     "yanked_versions": {}
 }
