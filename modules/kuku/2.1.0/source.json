@@ -2,9 +2,8 @@
     "url": "https://github.com/microsoft/Kuku/archive/refs/tags/v2.1.0.tar.gz",
     "integrity": "sha256-lu1frYLqjIqLuC9urwtdznRMDCVmtLqhHY9UQ60fg7c=",
     "strip_prefix": "Kuku-2.1.0",
-    "patches": {
-        "add_build_file.patch": "sha256-/EeZUQ32yf3YymmIVlMKbHEoJdShuO4BtIxCeHhnVIc=",
-        "module_dot_bazel.patch": "sha256-GZy4hhrfUFB+PvINBRF4MyIHZeXCmQ+9F1IF5eJDKRg="
-    },
-    "patch_strip": 0
+    "overlay": {
+        "BUILD.bazel": "sha256-rzDbZVSU5kmg7LlRl6CB1m+08SatzMVvhJnMTL743tw=",
+        "MODULE.bazel": "sha256-+UBNYq8BhcYkttK2SRAnXGsGinWBSp0erDG8I8Ge2U4="
+    }
 }

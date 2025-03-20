@@ -1,0 +1,9 @@
+module(
+    name = "curl",
+    version = "8.4.0.bcr.2",
+    compatibility_level = 0,
+)
+
+bazel_dep(name = "platforms", version = "0.0.8")
+
+bazel_dep(name = "openssl", version = "3.3.2")

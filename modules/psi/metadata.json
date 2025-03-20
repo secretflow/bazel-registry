@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/secretflow/psi",
+    "maintainers": [],
+    "repository": [
+        "github:secretflow/psi"
+    ],
+    "versions": [
+        "0.6.0.dev250123"
+    ],
+    "yanked_versions": {}
+}

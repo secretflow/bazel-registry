@@ -1,0 +1,11 @@
+{
+    "url": "https://github.com/intel/cryptography-primitives/archive/refs/tags/ippcp_2021.8.tar.gz",
+    "integrity": "sha256-1w9CgyM3d17bAiyorBrEGPJy55HsFHd473lCrt5BTNw=",
+    "strip_prefix": "cryptography-primitives-ippcp_2021.8",
+    "patches": {
+        "add_build_file.patch": "sha256-HyErvDDX7fFC5noXdLWdn/rUC5tflxyNDP9pH7VPFLY=",
+        "ippcp.patch": "sha256-InEfUGPiJGfLB2CCqw0C9fqfpFAawN5gp65oz4LKRbo=",
+        "module_dot_bazel.patch": "sha256-DTPBCTzPTeEpWIwm60KPwdGsV4+TYhx7vjkUPXtiuGY="
+    },
+    "patch_strip": 1
+}

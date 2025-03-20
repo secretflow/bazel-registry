@@ -2,8 +2,7 @@
     "url": "https://github.com/jedisct1/libsodium/releases/download/1.0.18-RELEASE/libsodium-1.0.18.tar.gz",
     "integrity": "sha256-b1BEkLNCpPikxKAvybhmy++GItXfTlRStGvhIeRmNsE=",
     "strip_prefix": "libsodium-1.0.18",
-    "patches": {
-        "add_build_file.patch": "sha256-XPXoNTMVuxIG63euIQH1p1Uepg+wcDBtCBgoFwDpCCk="
-    },
-    "patch_strip": 0
+    "overlay": {
+        "BUILD.bazel": "sha256-wBSa0gtohvaF9rptHMHTkviHUd0YCYJ/96DSUtLbhQw="
+    }
 }

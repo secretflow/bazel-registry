@@ -3,9 +3,11 @@
     "integrity": "sha256-mjf4phdPCb1iK8cjtViB3FQc1QdHy9CIMcKoLWIPbXY=",
     "strip_prefix": "leveldb-1.23",
     "patches": {
-        "leveldb.patch": "sha256-DvXjq9HGDdXTKn13cVBmDJgQdHy+Qh3eenFGJpfHTvU=",
-        "add_build_file.patch": "sha256-8ytJZ2j19W+CZzP/uw5LQo3Un/1dW8cxFhd1VOdIaH0=",
-        "module_dot_bazel.patch": "sha256-B7LWoKzR+ze1OZrs/8I7LQ5yLqTpNjcwSkskC6B0tD0="
+        "leveldb.patch": "sha256-DvXjq9HGDdXTKn13cVBmDJgQdHy+Qh3eenFGJpfHTvU="
     },
-    "patch_strip": 1
+    "patch_strip": 1,
+    "overlay": {
+        "BUILD.bazel": "sha256-FpyHrg27LJNijV7ZNuyUPcgyf7QHkffk7F0zIGYX4F0=",
+        "MODULE.bazel": "sha256-RQtdr/8D/WjSxXVE4M3KFBHpz0KuWZ4x+7v98d3qkrM="
+    }
 }

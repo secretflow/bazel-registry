@@ -1,0 +1,14 @@
+{
+    "homepage": "https://github.com/secretflow/spu",
+    "maintainers": [],
+    "repository": [
+        "github:secretflow/spu"
+    ],
+    "versions": [
+        "0.9.4.dev20250123",
+        "0.9.4.dev20250227",
+        "0.9.4.dev20250310",
+        "0.9.4.dev20250319"
+    ],
+    "yanked_versions": {}
+}
