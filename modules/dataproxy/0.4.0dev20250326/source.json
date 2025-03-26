@@ -1,0 +1,9 @@
+{
+    "integrity": "sha256-RV1MuODKRpxXgzQBNqNiQVIodsRIWkernhM/RoGrhmg=",
+    "strip_prefix": "dataproxy-0.4.0dev20250326",
+    "url": "https://github.com/secretflow/dataproxy/archive/refs/tags/v0.4.0dev20250326.tar.gz",
+    "patches": {
+        "module_dot_bazel_version.patch": "sha256-2gVLfvwcnZ+lxqbOoczAKkP0yPXhKFmvjzbZDTnM0wE="
+    },
+    "patch_strip": 1
+}
