@@ -1,7 +1,13 @@
 {
-  "homepage": "https://github.com/intel/cryptography-primitives",
-  "maintainers": [],
-  "repository": ["github:intel/cryptography-primitives"],
-  "versions": ["2021.8", "2021.8.bcr.1"],
-  "yanked_versions": {}
+    "homepage": "https://github.com/intel/cryptography-primitives",
+    "maintainers": [],
+    "repository": [
+        "github:intel/cryptography-primitives"
+    ],
+    "versions": [
+        "2021.8",
+        "2021.8.bcr.1",
+        "2021.8.bcr.2"
+    ],
+    "yanked_versions": {}
 }
