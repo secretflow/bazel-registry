@@ -5,7 +5,8 @@
         "github:intel/pailliercryptolib"
     ],
     "versions": [
-        "2.0.0-20231102-fdc2135"
+        "2.0.0-20231102-fdc2135",
+        "2.0.0-20231102-fdc2135.bcr.1"
     ],
     "yanked_versions": {}
 }

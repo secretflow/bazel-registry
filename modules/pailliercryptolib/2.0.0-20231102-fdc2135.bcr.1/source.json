@@ -1,0 +1,10 @@
+{
+    "url": "https://github.com/intel/pailliercryptolib/archive/fdc21350302117103452968ababc2f9676f0d383.tar.gz",
+    "integrity": "sha256-Gm7LbLgw5F5QHqzptJnOd2q5eqb92u61si3Dw0BEZGc=",
+    "strip_prefix": "pailliercryptolib-fdc21350302117103452968ababc2f9676f0d383",
+    "patches": {
+        "ipcl.patch": "sha256-ezctzfEL1tcabmkM46zkXVF8r0fs6DTJrCztrxXfVFM=",
+        "add_build_file.patch": "sha256-bObb9L91Apo5iZhROyx9g473SJOxkdWvnYuYMRL+U1U="
+    },
+    "patch_strip": 1
+}
