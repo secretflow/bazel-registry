@@ -4,7 +4,7 @@
     "strip_prefix": "pailliercryptolib-fdc21350302117103452968ababc2f9676f0d383",
     "patches": {
         "ipcl.patch": "sha256-ezctzfEL1tcabmkM46zkXVF8r0fs6DTJrCztrxXfVFM=",
-        "add_build_file.patch": "sha256-bObb9L91Apo5iZhROyx9g473SJOxkdWvnYuYMRL+U1U="
+        "add_build_file.patch": "sha256-A/vFdD7WvK3xFXywaZVESDlFSjSMPWInGfyf0GCHylI="
     },
     "patch_strip": 1
 }
