@@ -5,7 +5,8 @@
         "github:emp-toolkit/emp-ot"
     ],
     "versions": [
-        "0.2.4"
+        "0.2.4",
+        "0.2.4.bcr.1"
     ],
     "yanked_versions": {}
 }
