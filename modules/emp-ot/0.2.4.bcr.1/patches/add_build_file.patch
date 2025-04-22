@@ -27,10 +27,10 @@
 +cmake(
 +    name = "emp-ot",
 +    cache_entries = {
-+        "CMAKE_FOLDER": "$(EXT_BUILD_DEPS)/emp-tool",
-+        "EMP-TOOL_INCLUDE_DIR": "$(EXT_BUILD_DEPS)/emp-tool/include",
-+        "EMP-TOOL_LIBRARY": "$(EXT_BUILD_DEPS)/emp-tool/lib",
-+        "OPENSSL_ROOT_DIR": "$(EXT_BUILD_DEPS)/openssl",
++        "CMAKE_FOLDER": "$$EXT_BUILD_DEPS/emp-tool",
++        "EMP-TOOL_INCLUDE_DIR": "$$EXT_BUILD_DEPS/emp-tool/include",
++        "EMP-TOOL_LIBRARY": "$$EXT_BUILD_DEPS/emp-tool/lib",
++        "OPENSSL_ROOT_DIR": "$$EXT_BUILD_DEPS/openssl",
 +        "BUILD_TESTING": "OFF",
 +    },
 +    generate_args = ["-GNinja"],
