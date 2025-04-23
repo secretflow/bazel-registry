@@ -7,7 +7,7 @@
         "emp-tool-cmake.patch": "sha256-KGEY0u5wRwZx9PHbJX3+TluzyqHmomiMntZhyJmkXO8=",
         "emp-tool-sse2neon.patch": "sha256-5JpmuAvHRDKZml5VBqX9/pv0okR9XOn7xQFjGglmb7U=",
         "add_build_file.patch": "sha256-CRG8ZKjfhsJ87P8lNSP8GEl8B1TBWf7GQY2AiVgmB3k=",
-        "module_dot_bazel.patch": "sha256-fqX96hykxNlTGc76IiFgYLdnjQ4jdL8cUoCfirF+rQ8="
+        "module_dot_bazel.patch": "sha256-M79NImUHDlS3sN5qM48RZPaExoHidhX0GDVYxa7u8r4="
     },
     "patch_strip": 1
 }
