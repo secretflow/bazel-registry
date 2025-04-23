@@ -5,7 +5,8 @@
         "github:secretflow/dataproxy"
     ],
     "versions": [
-        "0.5.0.dev20250416"
+        "0.5.0.dev20250416",
+        "0.5.0.dev20250416.bcr.1"
     ],
     "yanked_versions": {}
 }
