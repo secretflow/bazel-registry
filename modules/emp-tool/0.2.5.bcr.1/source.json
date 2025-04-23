@@ -1,0 +1,13 @@
+{
+    "url": "https://github.com/emp-toolkit/emp-tool/archive/refs/tags/0.2.5.tar.gz",
+    "integrity": "sha256-uasjgDEueAIDRrXS2z0CRMe9gJjLUPizYgUy70kYCNA=",
+    "strip_prefix": "emp-tool-0.2.5",
+    "patches": {
+        "emp-tool.patch": "sha256-fK6RxPntOtfsKc0e1FvrBJTJgdVPmixFh/ntdR+TnZk=",
+        "emp-tool-cmake.patch": "sha256-KGEY0u5wRwZx9PHbJX3+TluzyqHmomiMntZhyJmkXO8=",
+        "emp-tool-sse2neon.patch": "sha256-5JpmuAvHRDKZml5VBqX9/pv0okR9XOn7xQFjGglmb7U=",
+        "add_build_file.patch": "sha256-CRG8ZKjfhsJ87P8lNSP8GEl8B1TBWf7GQY2AiVgmB3k=",
+        "module_dot_bazel.patch": "sha256-M79NImUHDlS3sN5qM48RZPaExoHidhX0GDVYxa7u8r4="
+    },
+    "patch_strip": 1
+}
