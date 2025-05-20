@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/open-quantum-safe/liboqs",
+    "maintainers": [],
+    "repository": [
+        "github:open-quantum-safe/liboqs"
+    ],
+    "versions": [
+        "0.13.0"
+    ],
+    "yanked_versions": {}
+}
