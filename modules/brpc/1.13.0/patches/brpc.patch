@@ -1,0 +1,107 @@
+diff --git a/BUILD.bazel b/BUILD.bazel
+index 4e0217fc..fa6e9ffb 100644
+--- a/BUILD.bazel
++++ b/BUILD.bazel
+@@ -56,6 +56,10 @@ COPTS = [
+ }) + select({
+     "//bazel/config:brpc_with_asan": ["-fsanitize=address"],
+     "//conditions:default": [""],
++}) + select({
++    # Force linux aarch to use O1 build
++    "@bazel_tools//src/conditions:linux_aarch64": ["-O1"],
++    "//conditions:default": [""],
+ })
+ 
+ LINKOPTS = [
+@@ -353,6 +357,7 @@ cc_library(
+         "//conditions:default": [],
+     }) + select({
+         "//bazel/config:brpc_with_boringssl": ["@boringssl//:ssl", "@boringssl//:crypto"],
++        "//bazel/config:brpc_with_tongsuo": ["@com_github_tongsuo_tongsuo//:tongsuo"],
+         "//conditions:default": ["@openssl//:ssl", "@openssl//:crypto"],
+     }),
+ )
+diff --git a/bazel/config/BUILD.bazel b/bazel/config/BUILD.bazel
+index 57569dd3..cff19419 100644
+--- a/bazel/config/BUILD.bazel
++++ b/bazel/config/BUILD.bazel
+@@ -110,6 +110,12 @@ config_setting(
+     visibility = ["//visibility:public"],
+ )
+ 
++config_setting(
++    name = "brpc_with_tongsuo",
++    define_values = {"BRPC_WITH_TONGSUO": "true"},
++    visibility = ["//visibility:public"],
++)
++
+ config_setting(
+     name = "brpc_with_debug_bthread_sche_safety",
+     define_values = {"with_debug_bthread_sche_safety": "true"},
+diff --git a/src/brpc/policy/http_rpc_protocol.cpp b/src/brpc/policy/http_rpc_protocol.cpp
+index 374b1df9..99924b05 100644
+--- a/src/brpc/policy/http_rpc_protocol.cpp
++++ b/src/brpc/policy/http_rpc_protocol.cpp
+@@ -719,12 +719,12 @@ void SerializeHttpRequest(butil::IOBuf* /*not used*/,
+ 
+     Span* span = accessor.span();
+     if (span) {
+-        hreq.SetHeader("x-bd-trace-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->trace_id()));
+-        hreq.SetHeader("x-bd-span-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->span_id()));
+-        hreq.SetHeader("x-bd-parent-span-id", butil::string_printf(
+-                           "%llu", (unsigned long long)span->parent_span_id()));
++        hreq.SetHeader("x-b3-traceid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->trace_id()));
++        hreq.SetHeader("x-b3-spanid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->span_id()));
++        hreq.SetHeader("x-b3-parentspanid", butil::string_printf(
++                           "%016llx", (unsigned long long)span->parent_span_id()));
+     }
+ }
+ 
+@@ -1471,22 +1471,22 @@ void ProcessHttpRequest(InputMessageBase *msg) {
+ 
+     Span* span = NULL;
+     const std::string& path = req_header.uri().path();
+-    const std::string* trace_id_str = req_header.GetHeader("x-bd-trace-id");
++    const std::string* trace_id_str = req_header.GetHeader("x-b3-traceid");
+     if (IsTraceable(trace_id_str)) {
+         uint64_t trace_id = 0;
+         if (trace_id_str) {
+-            trace_id = strtoull(trace_id_str->c_str(), NULL, 10);
++            trace_id = strtoull(trace_id_str->c_str(), NULL, 16);
+         }
+         uint64_t span_id = 0;
+-        const std::string* span_id_str = req_header.GetHeader("x-bd-span-id");
++        const std::string* span_id_str = req_header.GetHeader("x-b3-spanid");
+         if (span_id_str) {
+-            span_id = strtoull(span_id_str->c_str(), NULL, 10);
++            span_id = strtoull(span_id_str->c_str(), NULL, 16);
+         }
+         uint64_t parent_span_id = 0;
+         const std::string* parent_span_id_str =
+-            req_header.GetHeader("x-bd-parent-span-id");
++            req_header.GetHeader("x-b3-parentspanid");
+         if (parent_span_id_str) {
+-            parent_span_id = strtoull(parent_span_id_str->c_str(), NULL, 10);
++            parent_span_id = strtoull(parent_span_id_str->c_str(), NULL, 16);
+         }
+         span = Span::CreateServerSpan(
+             path, trace_id, span_id, parent_span_id, msg->base_real_us());
+diff --git a/src/bvar/default_variables.cpp b/src/bvar/default_variables.cpp
+index 011508aa..e985ea6c 100644
+--- a/src/bvar/default_variables.cpp
++++ b/src/bvar/default_variables.cpp
+@@ -110,8 +110,9 @@ static bool read_proc_status(ProcStat &stat) {
+         return -1;
+     }
+     const std::string& result = oss.str();
++    // macOS flags is actually a hex, ref https://github.com/apache/incubator-brpc/issues/1106
+     if (sscanf(result.c_str(), "%d %d %d %d"
+-                              "%d %u %ld %ld",
++                              "%d %x %ld %ld",
+                &stat.pid, &stat.ppid, &stat.pgrp, &stat.session,
+                &stat.tpgid, &stat.flags, &stat.priority, &stat.nice) != 8) {
+         PLOG(WARNING) << "Fail to sscanf";

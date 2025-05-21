@@ -1,0 +1,10 @@
+{
+    "url": " https://github.com/apache/brpc/archive/refs/tags/1.13.0.tar.gz",
+    "integrity": "sha256-6IBR58dHVdtYiN0DmaS9EAbn4oRjUwl8RKoH11ilVgk=",
+    "strip_prefix": "brpc-1.13.0",
+    "patch_strip": 1,
+    "patches": {
+        "brpc.patch": "sha256-y5X+4asMp6VGEgoBy8OYG0sDbucnofq01zsu87PrYuo=",
+        "MODULE_dot_bazel.patch": "sha256-/a6RqNcdH0gKnrA9NUOCzJS69C4IPbhoh9zckEupJiM="
+    }
+}

@@ -1,0 +1,22 @@
+diff --git a/MODULE.bazel b/MODULE.bazel
+index b9474156..804f2630 100644
+--- a/MODULE.bazel
++++ b/MODULE.bazel
+@@ -7,7 +7,7 @@ module(
+ # --registry=https://bcr.bazel.build
+ bazel_dep(name = 'abseil-cpp', version = '20210324.2', repo_name = 'com_google_absl')
+ bazel_dep(name = 'bazel_skylib', version = '1.0.3')
+-bazel_dep(name = 'boringssl', version = '0.0.0-20211025-d4f1ab9')
++bazel_dep(name = 'boringssl', version = '0.0.0-20230215-5c22014')
+ bazel_dep(name = 'protobuf', version = '27.3', repo_name = 'com_google_protobuf')
+ bazel_dep(name = 'gflags', version = '2.2.2', repo_name = 'com_github_gflags_gflags')
+ bazel_dep(name = 'glog', version = '0.5.0', repo_name = 'com_github_google_glog')
+@@ -32,6 +32,8 @@ single_version_override(
+ )
+ bazel_dep(name = 'thrift', version = '0.21.0', repo_name = 'org_apache_thrift')
+ 
++bazel_dep(name = "tongsuo", version = "8.4.0", repo_name = "com_github_tongsuo_tongsuo")
++
+ # test only
+ bazel_dep(name = 'googletest', version = '1.14.0.bcr.1', repo_name = 'com_google_googletest', dev_dependency = True)
+ bazel_dep(name = 'hedron_compile_commands', dev_dependency = True)
