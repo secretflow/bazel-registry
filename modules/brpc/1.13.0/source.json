@@ -5,6 +5,6 @@
     "patch_strip": 0,
     "patches": {
         "brpc.patch": "sha256-/TJUY3sRiEyXbvFp6sGXz8dPQQT2wL8lU9GTxQJI60M=",
-        "MODULE_dot_bazel.patch": "sha256-MnPZJNH5WQwszP0Sm6Nc1XrxhHvbHVt30ocjRO4c5wQ="
+        "MODULE_dot_bazel.patch": "sha256-/a6RqNcdH0gKnrA9NUOCzJS69C4IPbhoh9zckEupJiM="
     }
 }
