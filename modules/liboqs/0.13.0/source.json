@@ -3,6 +3,6 @@
     "integrity": "sha256-eJ6bVry2tYJGfMr1zbWrhSNrDBAH0wxgZ5j6iQUVKIc=",
     "strip_prefix": "liboqs-0.13.0",
     "overlay": {
-        "BUILD.bazel": "sha256-Wl5O4AeEBvzlhesVm10LT73nGoHNcw8fDypV7YPnEJs="
+        "BUILD.bazel": "sha256-aAvLaJdlYAYr0+/ibjd2Oc5j1XTwAGFsTmykjrd3d7A="
     }
 }
