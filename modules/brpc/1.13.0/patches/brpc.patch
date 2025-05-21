@@ -1,20 +1,18 @@
 diff --git a/BUILD.bazel b/BUILD.bazel
-index 4e0217fc..6d93dd37 100644
+index 4e0217fc..fa6e9ffb 100644
 --- a/BUILD.bazel
 +++ b/BUILD.bazel
-@@ -56,7 +56,11 @@ COPTS = [
+@@ -56,6 +56,10 @@ COPTS = [
  }) + select({
      "//bazel/config:brpc_with_asan": ["-fsanitize=address"],
      "//conditions:default": [""],
--})
-+}) + select(
++}) + select({
 +    # Force linux aarch to use O1 build
 +    "@bazel_tools//src/conditions:linux_aarch64": ["-O1"],
 +    "//conditions:default": [""],
-+)
+ })
  
  LINKOPTS = [
-     "-pthread",
 @@ -353,6 +357,7 @@ cc_library(
          "//conditions:default": [],
      }) + select({
