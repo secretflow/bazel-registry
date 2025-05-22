@@ -1,8 +1,14 @@
 diff --git a/BUILD.bazel b/BUILD.bazel
-index 4e0217fc..fa6e9ffb 100644
+index 4e0217fc..4ce2dbb6 100644
 --- a/BUILD.bazel
 +++ b/BUILD.bazel
-@@ -56,6 +56,10 @@ COPTS = [
+@@ -51,11 +51,15 @@ COPTS = [
+     "//bazel/config:brpc_with_debug_lock": ["-DBRPC_DEBUG_LOCK=1"],
+     "//conditions:default": ["-DBRPC_DEBUG_LOCK=0"],
+ }) + select({
+-    "@platforms//cpu:x86_64": ["-DBRPC_BTHREAD_TRACER"],
++    "//bazel/config:brpc_with_bthread_tracer": ["-DBRPC_BTHREAD_TRACER"],
+     "//conditions:default": [],
  }) + select({
      "//bazel/config:brpc_with_asan": ["-fsanitize=address"],
      "//conditions:default": [""],
@@ -21,11 +27,20 @@ index 4e0217fc..fa6e9ffb 100644
          "//conditions:default": ["@openssl//:ssl", "@openssl//:crypto"],
      }),
  )
+@@ -412,7 +417,7 @@ cc_library(
+         ":butil",
+         ":bvar",
+     ] + select({
+-        "@platforms//cpu:x86_64": ["@com_github_libunwind_libunwind//:libunwind"],
++        "//bazel/config:brpc_with_bthread_tracer": ["@com_github_libunwind_libunwind//:libunwind"],
+         "//conditions:default": [],
+     }),
+ )
 diff --git a/bazel/config/BUILD.bazel b/bazel/config/BUILD.bazel
-index 57569dd3..cff19419 100644
+index 57569dd3..912aa997 100644
 --- a/bazel/config/BUILD.bazel
 +++ b/bazel/config/BUILD.bazel
-@@ -110,6 +110,12 @@ config_setting(
+@@ -110,12 +110,28 @@ config_setting(
      visibility = ["//visibility:public"],
  )
  
@@ -38,6 +53,22 @@ index 57569dd3..cff19419 100644
  config_setting(
      name = "brpc_with_debug_bthread_sche_safety",
      define_values = {"with_debug_bthread_sche_safety": "true"},
+     visibility = ["//visibility:public"],
+ )
+ 
++config_setting(
++    name = "brpc_with_bthread_tracer",
++    constraint_values = [
++        "@platforms//cpu:x86_64",
++    ],
++    define_values = {
++        "with_bthread_tracer": "true",
++    },
++)
++
+ config_setting(
+     name = "brpc_with_debug_lock",
+     define_values = {"with_debug_lock": "true"},
 diff --git a/src/brpc/policy/http_rpc_protocol.cpp b/src/brpc/policy/http_rpc_protocol.cpp
 index 374b1df9..99924b05 100644
 --- a/src/brpc/policy/http_rpc_protocol.cpp

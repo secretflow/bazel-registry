@@ -4,7 +4,7 @@
     "strip_prefix": "brpc-1.13.0",
     "patch_strip": 1,
     "patches": {
-        "brpc.patch": "sha256-y5X+4asMp6VGEgoBy8OYG0sDbucnofq01zsu87PrYuo=",
+        "brpc.patch": "sha256-yv17b6KyDzotSXTcQOrmdQNpBMh2C32a85blb3mNRxo=",
         "MODULE_dot_bazel.patch": "sha256-/a6RqNcdH0gKnrA9NUOCzJS69C4IPbhoh9zckEupJiM="
     }
 }
