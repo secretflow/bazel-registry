@@ -1,0 +1,11 @@
+{
+    "url": "https://github.com/apache/arrow/archive/apache-arrow-17.0.0.tar.gz",
+    "integrity": "sha256-g3lVTYnxnyyNtjYgchyrreYlQfR6TnBt+wpAHwWnE+8=",
+    "strip_prefix": "arrow-apache-arrow-17.0.0",
+    "patches": {
+        "arrow.patch": "sha256-XcaIkl3Uc3bKZqTVOBqLkUuL9ApaSK2yRecUhzA83sE=",
+        "module_dot_bazel.patch": "sha256-w81IE8ZFsztHIfrfk6AJ3j6Mcqzwq5eXGvvBadP8vhE=",
+        "add_build_file.patch": "sha256-gHAbtGA8yVXOcU8wY4/HeANFEd3t6nsQsgiWkwvgX+s="
+    },
+    "patch_strip": 1
+}
