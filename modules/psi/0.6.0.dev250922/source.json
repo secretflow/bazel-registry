@@ -1,0 +1,9 @@
+{
+    "integrity": "sha256-yUmNIe+dYdX/vEQd8S2AH/9lFQvOJnd5ymR1UJBRgrs=",
+    "strip_prefix": "psi-0.6.0.dev250922",
+    "url": "https://github.com/secretflow/psi/archive/refs/tags/v0.6.0.dev250922.tar.gz",
+    "patches": {
+        "module_dot_bazel_version.patch": "sha256-MnhAM7UMC6nnuQ4DM2DZLoc5USo0d4YGlZP8wwdFKHI="
+    },
+    "patch_strip": 1
+}
