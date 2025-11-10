@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/google-ml-infra/rules_ml_toolchain/archive/0fccc2447ef3bec3d75046a60a1895f053424727.tar.gz",
+    "integrity": "sha256-PqEEHetGz0+SfdmU4yrNjENveZexKpVY6F3ualqJ41w=",
+    "strip_prefix": "rules_ml_toolchain-0fccc2447ef3bec3d75046a60a1895f053424727",
+    "overlay": {
+        "MODULE.bazel": "sha256-Er3B1yIq6aVRztYXxTMniHRjk0U0MeKvw4DE6bL/qTI="
+    }
+}
