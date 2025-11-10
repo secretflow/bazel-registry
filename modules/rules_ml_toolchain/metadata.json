@@ -1,0 +1,22 @@
+{
+    "homepage": "https://github.com/google-ml-infra/rules_ml_toolchain",
+    "maintainers": [
+        {
+            "email": "yuriit@google.com",
+            "github": "yuriivcs",
+            "name": "Yurii Topin"
+        },
+        {
+            "email": "vam@google.com",
+            "github": "vam-google",
+            "name": "Vadym Matsishevskyi"
+        }
+    ],
+    "repository": [
+        "github:google-ml-infra/rules_ml_toolchain"
+    ],
+    "versions": [
+        "20251012.0-0fccc24"
+    ],
+    "yanked_versions": {}
+}
