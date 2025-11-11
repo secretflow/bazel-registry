@@ -1,0 +1,8 @@
+{
+    "strip_prefix": "xla-9f150f6b75c08d6ea7b97697c4f393f1a0eb6121",
+    "url": "https://github.com/openxla/xla/archive/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
+    "integrity": "sha256-Uep+vQcMpPgeufxZEsDRIN0U/ZarK6dhwxOB73Igmzs=",
+    "overlay": {
+        "MODULE.bazel": "sha256-ALiojFp4miEPcq4yBnY4ymB28dIKeSpt/jVBX1P8ha0="
+    }
+}
