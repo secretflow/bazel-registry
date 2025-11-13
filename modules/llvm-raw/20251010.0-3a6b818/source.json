@@ -1,0 +1,18 @@
+{
+    "strip_prefix": "llvm-project-3a6b818132e3133c7d33f8f577e62503f12869b4",
+    "url": "https://github.com/llvm/llvm-project/archive/3a6b818132e3133c7d33f8f577e62503f12869b4.tar.gz",
+    "integrity": "sha256-oLPeaYOT4PSdCso/hpzAO/DFnroMZfYI5WUniUPDGVg=",
+    "overlay": {
+        "BUILD.bazel": "sha256-47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=",
+        "MODULE.bazel": "sha256-bQFtm0iZUVEcDEhHqS5+EwBvpu2PDKj6rPENf+EE+ko=",
+        "utils/bazel/extension.bzl": "sha256-e09Vzxwqz9HGVFUIXz2HCm1Whki2eKvILED+Xn7Xr/E="
+    },
+    "patch_strip": 1,
+    "patches": {
+        "001-generated.patch": "sha256-NqGbxZ7UQlc41theiIWwNGcEJnHxWXhkF5QpRJHpky0=",
+        "002-build.patch": "sha256-sO7uhG8cstDNkCji2Q8Q3SNpkVZ0jdjuzutZZ7HEcHQ=",
+        "003-mathextras.patch": "sha256-kj1P3pKdOJO6iHACzl7vJ6CK3pc/nw9lJPQ8RvdqfR0=",
+        "004-toolchains.patch": "sha256-eaPUwhn1mK05O+QpBvHWsEGaCjierVf8aRaLNArYuRk=",
+        "005-zstd.patch": "sha256-C1t1/u9dg/ak/lau1Yd9wt1Ad2WTEsAPiPySzYYjO+Q="
+    }
+}

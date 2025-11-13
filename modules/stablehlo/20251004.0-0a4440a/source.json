@@ -1,0 +1,12 @@
+{
+    "strip_prefix": "stablehlo-0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d",
+    "url": "https://github.com/openxla/stablehlo/archive/0a4440a5c8de45c4f9649bf3eb4913bf3f97da0d.tar.gz",
+    "integrity": "sha256-EIDUuC8N6ITrRfyhQ1F6lLc7n8wyUfN0/76nh1zX5fM=",
+    "overlay": {
+        "MODULE.bazel": "sha256-bQFtm0iZUVEcDEhHqS5+EwBvpu2PDKj6rPENf+EE+ko="
+    },
+    "patch_strip": 1,
+    "patches": {
+        "temporary.patch": "sha256-wsLadnjEQdPzkpbLid4lgx6sr/sEymgDaaO9tvfATD8="
+    }
+}
