@@ -3,11 +3,11 @@
     "integrity": "sha256-9nS3U69x3DE9nS3PNPV08KNDjJ+buefmylAKOwyn3fs=",
     "strip_prefix": "brpc-1.15.0",
     "overlay": {
-        "MODULE.bazel": "sha256-TC/5aHG8xIx9/5Kf+zExfhoB7gNvrjyjGayDSpWhTYI="
+        "MODULE.bazel": "sha256-1mCis1FXrfVgNGKjLiLIJoyhfTWraiX4YPtXscrwTm4="
     },
     "patch_strip": 1,
     "patches": {
         "brpc.patch": "sha256-4nft1S+oBeUvxqqBGEHwYp4Q2Kq0/tqsq5pwXvYdVMs=",
-        "brpc-string_view.patch": "sha256-fkhDBHCvtZh1UaB3zsquXv0VyKDwxC7GVLiVamGeFLs="
+        "brpc-string_view.patch": "sha256-LNTh7GH0R2dQ136colB2tiOgVBWpmROVYnQbnUYjKvE="
     }
 }
