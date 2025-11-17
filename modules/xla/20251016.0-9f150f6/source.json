@@ -4,5 +4,9 @@
     "integrity": "sha256-Uep+vQcMpPgeufxZEsDRIN0U/ZarK6dhwxOB73Igmzs=",
     "overlay": {
         "MODULE.bazel": "sha256-ALiojFp4miEPcq4yBnY4ymB28dIKeSpt/jVBX1P8ha0="
-    }
+    },
+    "patches": {
+        "protobuf-debugstring.patch": "sha256-OD9Ly7seITJzgZYLhRAAPVhzw7Qpazd/GanMpG/1rJw="
+    },
+    "patch_strip": 1
 }
