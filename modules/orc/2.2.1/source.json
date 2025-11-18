@@ -1,0 +1,14 @@
+{
+    "url": "https://github.com/apache/orc/archive/refs/tags/v2.2.1.tar.gz",
+    "integrity": "sha256-+CYIbkNRKYLTd0acNbZ5TP31nUG5HJvQTr+sTLsZ8go=",
+    "strip_prefix": "orc-2.2.1",
+    "overlay": {
+        "BUILD.bazel": "sha256-p/DDDHxTKFr+2o6ZUGQymiUELyTxYoqL3zqALiADh0o=",
+        "MODULE.bazel": "sha256-btPbOfsUqdbbI4CTuy9IDSCWOCvi7EX3tJqDWQqIQzw="
+    },
+    "patch_strip": 1,
+    "patches": {
+        "orc.patch": "sha256-s9OiHw9Hy4XV7oz8hLGlvxAvjIgUYbwhHcXUNxm8iXw=",
+        "add_orc_proto.patch": "sha256-6cOld8nLtF1/uCCAw4qDUnnOBAprOWCg12lK/la4+qg="
+    }
+}
