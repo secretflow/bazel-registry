@@ -3,7 +3,7 @@
     "url": "https://github.com/openxla/xla/archive/9f150f6b75c08d6ea7b97697c4f393f1a0eb6121.tar.gz",
     "integrity": "sha256-Uep+vQcMpPgeufxZEsDRIN0U/ZarK6dhwxOB73Igmzs=",
     "overlay": {
-        "MODULE.bazel": "sha256-ALiojFp4miEPcq4yBnY4ymB28dIKeSpt/jVBX1P8ha0="
+        "MODULE.bazel": "sha256-V8Xy8zw/TSElYhIneOySKO4CMr/srhnHryDeKMrhdeI="
     },
     "patches": {
         "protobuf-debugstring.patch": "sha256-OD9Ly7seITJzgZYLhRAAPVhzw7Qpazd/GanMpG/1rJw="
