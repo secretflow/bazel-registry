@@ -1,0 +1,9 @@
+{
+    "integrity": "sha256-SRfNBPjqKIzPUVzPnRLyE5xZhGIvFF4urubf0Ydm12Q=",
+    "strip_prefix": "heu-0.6.0b1",
+    "url": "https://github.com/secretflow/heu/archive/refs/tags/v0.6.0b1.tar.gz",
+    "patches": {
+        "module_dot_bazel_version.patch": "sha256-xgMFGCXG4YjCheQQfiDYEhqjbUjGB9+FhKi1ATJQtSk="
+    },
+    "patch_strip": 1
+}
