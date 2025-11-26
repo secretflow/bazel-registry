@@ -1,0 +1,9 @@
+{
+    "integrity": "sha256-XESfHf5qY4LMK9VnXMp4c4U7gGMhVkgwU3BIrjIOSo8=",
+    "strip_prefix": "spu-0.9.5rc1/src",
+    "url": "https://github.com/secretflow/spu/archive/refs/tags/0.9.5rc1.tar.gz",
+    "patches": {
+        "module_dot_bazel_version.patch": "sha256-igdMiVERWA3tCXrWczh20Lzq3bcLqreDech9Mlk439Q="
+    },
+    "patch_strip": 1
+}
