@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-compression/archive/v0.2.17.tar.gz",
+    "integrity": "sha256-cD0WceOV6ib4sLcNZ47UcUIWhaieEn+KoSXisuztsOA=",
+    "strip_prefix": "aws-c-compression-0.2.17",
+    "overlay": {
+        "BUILD.bazel": "sha256-G6EkpYRAKKev/Z5lXKsLuS6cn6J1pFamJEEFWrZR8Uw="
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-auth",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-auth"
+    ],
+    "versions": [
+        "0.7.8"
+    ],
+    "yanked_versions": {}
+}

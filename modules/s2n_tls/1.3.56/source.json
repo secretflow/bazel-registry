@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/aws/s2n-tls/archive/v1.3.56.tar.gz",
+    "integrity": "sha256-XXurgTV6VkRTvEU0abSuApNvHzUiWtKXuNhG0uzdpSE=",
+    "strip_prefix": "s2n-tls-1.3.56",
+    "overlay": {
+        "BUILD.bazel": "sha256-JuntVo9OHHajAm8iKO4LH32e8QNcNgGv6xZMNmOrK0M="
+    }
+}

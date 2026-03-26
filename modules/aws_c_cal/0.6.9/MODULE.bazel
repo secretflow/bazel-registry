@@ -1,0 +1,8 @@
+module(
+    name = "aws_c_cal",
+    version = "0.6.9",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "aws_c_common", version = "0.9.10")
+bazel_dep(name = "openssl", version = "3.3.2")

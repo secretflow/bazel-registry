@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-event-stream/archive/v0.3.2.tar.gz",
+    "integrity": "sha256-MTSzWkXp+dl0wreO5E/S6grrwE34Aja4BpKqY77iCS4=",
+    "strip_prefix": "aws-c-event-stream-0.3.2",
+    "overlay": {
+        "BUILD.bazel": "sha256-XCgaGLuQaFqVNmKj3sEla5bI1h4msNV9U84ZccfePF4="
+    }
+}

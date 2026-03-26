@@ -1,0 +1,21 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+
+cc_library(
+    name = "aws_c_auth",
+    srcs = glob([
+        "source/*.c",
+    ]),
+    hdrs = glob([
+        "include/aws/auth/*.h",
+        "include/aws/auth/private/*.h",
+    ]),
+    includes = [
+        "include",
+    ],
+    deps = [
+        "@aws_c_cal",
+        "@aws_c_http",
+        "@aws_c_sdkutils",
+    ],
+)

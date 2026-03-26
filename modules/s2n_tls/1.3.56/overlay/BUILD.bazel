@@ -1,0 +1,52 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+
+cc_library(
+    name = "s2n_tls",
+    srcs = glob([
+        "tls/**/*.c",
+        "tls/**/*.h",
+        "crypto/**/*.c",
+        "crypto/**/*.h",
+        "stuffer/**/*.c",
+        "stuffer/**/*.h",
+        "utils/**/*.c",
+        "utils/**/*.h",
+        "error/**/*.c",
+        "error/**/*.h",
+        "pq-crypto/*.c",
+        "pq-crypto/**/*.h",
+    ]),
+    hdrs = glob([
+        "api/**/*.h",
+    ]) + [":s2n_config_h"],
+    copts = [
+        "-DS2N_NO_PQ",
+        "-DS2N_FEATURES_AVAILABLE",
+        "-DS2N_STACKTRACE",
+        "-DS2N_CPUID_AVAILABLE",
+        "-DS2N_FALL_THROUGH_SUPPORTED",
+        "-DS2N___RESTRICT__SUPPORTED",
+        "-DS2N_MADVISE_SUPPORTED",
+        "-DS2N_LIBCRYPTO_SUPPORTS_EVP_RC4",
+        "-DS2N_LIBCRYPTO_SUPPORTS_EVP_MD5_SHA1_HASH",
+    ] + select({
+        "@bazel_tools//src/conditions:linux": [
+            "-DS2N_CLONE_SUPPORTED",
+        ],
+        "//conditions:default": [],
+    }),
+    includes = [
+        ".",
+        "api",
+    ],
+    deps = [
+        "@openssl",
+    ],
+)
+
+genrule(
+    name = "s2n_config_h",
+    outs = ["api/s2n_config.h"],
+    cmd = "touch $@",
+)

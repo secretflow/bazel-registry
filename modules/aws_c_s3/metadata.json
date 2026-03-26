@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-s3",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-s3"
+    ],
+    "versions": [
+        "0.4.2"
+    ],
+    "yanked_versions": {}
+}

@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-sdkutils",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-sdkutils"
+    ],
+    "versions": [
+        "0.1.12"
+    ],
+    "yanked_versions": {}
+}

@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-http",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-http"
+    ],
+    "versions": [
+        "0.7.14"
+    ],
+    "yanked_versions": {}
+}

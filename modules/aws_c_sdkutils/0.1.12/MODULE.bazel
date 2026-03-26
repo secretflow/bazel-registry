@@ -1,0 +1,7 @@
+module(
+    name = "aws_c_sdkutils",
+    version = "0.1.12",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "aws_c_common", version = "0.9.10")

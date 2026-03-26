@@ -1,0 +1,34 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+
+cc_library(
+    name = "aws_c_cal",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": glob([
+            "source/*.c",
+            "source/windows/*.c",
+        ]),
+        "@bazel_tools//src/conditions:darwin": glob([
+            "source/*.c",
+            "source/darwin/*.c",
+        ]),
+        "@bazel_tools//src/conditions:linux": glob([
+            "source/*.c",
+            "source/unix/*.c",
+        ]),
+        "//conditions:default": glob([
+            "source/*.c",
+        ]),
+    }),
+    hdrs = glob([
+        "include/aws/cal/*.h",
+        "include/aws/cal/private/*.h",
+    ]),
+    includes = [
+        "include",
+    ],
+    deps = [
+        "@aws_c_common",
+        "@openssl",
+    ],
+)

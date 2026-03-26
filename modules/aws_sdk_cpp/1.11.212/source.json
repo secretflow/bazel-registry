@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/aws/aws-sdk-cpp/archive/1.11.212.tar.gz",
+    "integrity": "sha256-iRsLcQfJQuZBPotG6kHF6bhW1rmE38ziddFoirVdIe8=",
+    "strip_prefix": "aws-sdk-cpp-1.11.212",
+    "overlay": {
+        "BUILD.bazel": "sha256-eQTnjg6CUbT+H2xf8XtvRZykJgvD8FK+F2zh/CH42YE="
+    }
+}

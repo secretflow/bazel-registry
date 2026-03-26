@@ -1,0 +1,9 @@
+module(
+    name = "aws_c_event_stream",
+    version = "0.3.2",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "aws_c_common", version = "0.9.10")
+bazel_dep(name = "aws_c_io", version = "0.13.36")
+bazel_dep(name = "aws_checksums", version = "0.1.17")

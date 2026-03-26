@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-crt-cpp/archive/v0.24.8.tar.gz",
+    "integrity": "sha256-wuxTm5ISJDBKCoKBNsaOKj4CG+IPvfKkpKiV+nNCWMI=",
+    "strip_prefix": "aws-crt-cpp-0.24.8",
+    "overlay": {
+        "BUILD.bazel": "sha256-fVqFkYBnXVbdCde06v0d1XlARQe1fMl55BeMJ3JQhFE="
+    }
+}

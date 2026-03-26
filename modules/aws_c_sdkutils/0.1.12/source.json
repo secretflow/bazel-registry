@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-sdkutils/archive/v0.1.12.tar.gz",
+    "integrity": "sha256-yHbDzikY8RgcJIKfWZyPBuKXM/C9ZVbUxPtSM5BWExY=",
+    "strip_prefix": "aws-c-sdkutils-0.1.12",
+    "overlay": {
+        "BUILD.bazel": "sha256-zV1X6BZpL1sGGq7/8R5HCgYnaLJlU8RrmrLle72sixY="
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-cal",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-cal"
+    ],
+    "versions": [
+        "0.6.9"
+    ],
+    "yanked_versions": {}
+}

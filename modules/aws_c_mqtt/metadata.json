@@ -1,11 +1,10 @@
 {
-    "homepage": "https://github.com/awslabs/aws-c-common",
+    "homepage": "https://github.com/awslabs/aws-c-mqtt",
     "maintainers": [],
     "repository": [
-        "github:awslabs/aws-c-common"
+        "github:awslabs/aws-c-mqtt"
     ],
     "versions": [
-        "0.4.29",
         "0.9.10"
     ],
     "yanked_versions": {}

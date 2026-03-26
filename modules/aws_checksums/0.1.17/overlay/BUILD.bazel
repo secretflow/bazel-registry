@@ -1,0 +1,19 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+exports_files(["LICENSE"])
+
+cc_library(
+    name = "aws_checksums",
+    srcs = glob([
+        "source/*.c",
+        "source/generic/*.c",
+    ]),
+    hdrs = glob([
+        "include/aws/checksums/*.h",
+        "include/aws/checksums/private/*.h",
+    ]),
+    includes = ["include"],
+    deps = [
+        "@aws_c_common",
+    ],
+)

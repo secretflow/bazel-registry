@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-http/archive/v0.7.14.tar.gz",
+    "integrity": "sha256-r7k1OVyTQnrAhT1jY5AKcYFqBQjxjIboTaDm6+cnFCk=",
+    "strip_prefix": "aws-c-http-0.7.14",
+    "overlay": {
+        "BUILD.bazel": "sha256-TmC4BkUNzROEa49cAAqmfcTjHZrBxpxKMq2NCBTdDoo="
+    }
+}
