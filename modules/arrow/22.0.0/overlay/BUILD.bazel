@@ -122,9 +122,6 @@ cc_library(
             "cpp/src/arrow/compute/**/*.cc",
             "cpp/src/arrow/util/*.cc",
             "cpp/src/arrow/adapters/orc/*.cc",
-            # used by test files
-            "cpp/src/arrow/testing/random.cc",
-            "cpp/src/arrow/testing/gtest_util.cc",
             "cpp/src/arrow/vendored/base64.cpp",
             "cpp/src/arrow/**/*.h",
             "cpp/src/parquet/**/*.h",
