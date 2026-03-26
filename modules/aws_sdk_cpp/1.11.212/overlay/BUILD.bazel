@@ -50,6 +50,10 @@ cc_library(
     hdrs = glob([
         "src/aws-cpp-sdk-core/include/**/*.h",
     ]) + [":SDKConfig_h"],
+    copts = [
+        "-DENABLE_CURL_CLIENT",
+        "-DENABLE_OPENSSL_ENCRYPTION",
+    ],
     includes = [
         "src/aws-cpp-sdk-core/include",
         "generated/include",
