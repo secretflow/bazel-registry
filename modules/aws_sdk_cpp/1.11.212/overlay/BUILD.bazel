@@ -28,7 +28,7 @@ cc_library(
         "@bazel_tools//src/conditions:windows": glob([
             "src/aws-cpp-sdk-core/source/platform/windows/*.cpp",
         ]),
-        "@bazel_tools//src/conditions:linux": glob([
+        "//conditions:default": glob([
             "src/aws-cpp-sdk-core/source/platform/linux-shared/*.cpp",
         ]),
     }) + glob(
