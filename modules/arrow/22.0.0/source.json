@@ -3,7 +3,7 @@
     "integrity": "sha256-ipXmx7m+wrwAWP63Pv44rWz9SaDHCU2ymzfsqoqxYFE=",
     "strip_prefix": "arrow-apache-arrow-22.0.0",
     "overlay": {
-        "BUILD.bazel": "sha256-/v9xDXz2KpEMmcGVdJuHXYlm/GEcb5WFazyUJuoj39k="
+        "BUILD.bazel": "sha256-nxEBIHJ5z5cWYH+KtF6e5s/WT9ZTkRq0WBj+W/kihrQ="
     },
     "patches": {
         "copy_proto.patch": "sha256-f7YPbrqtbOhXUZpg83U01xfPAqkKBdXNtlhsJX8hFaM=",
