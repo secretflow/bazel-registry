@@ -122,8 +122,11 @@ cc_library(
             "cpp/src/arrow/compute/**/*.cc",
             "cpp/src/arrow/util/*.cc",
             "cpp/src/arrow/adapters/orc/*.cc",
-            "cpp/src/arrow/testing/random.cc",
+            "cpp/src/arrow/testing/generator.cc",
             "cpp/src/arrow/testing/gtest_util.cc",
+            "cpp/src/arrow/testing/math.cc",
+            "cpp/src/arrow/testing/random.cc",
+            "cpp/src/arrow/testing/util.cc",
             "cpp/src/arrow/vendored/base64.cpp",
             "cpp/src/arrow/**/*.h",
             "cpp/src/parquet/**/*.h",
@@ -170,6 +173,7 @@ cc_library(
     defines = [
         "ARROW_STATIC",
         "ARROW_EXPORT=",
+        "ARROW_TESTING_EXPORT=",
         "PARQUET_STATIC",
     ],
     includes = [
