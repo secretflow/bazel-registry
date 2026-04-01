@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-cal/archive/v0.6.9.tar.gz",
+    "integrity": "sha256-Rt79gHA0yp2HPMFFm8YPC7RmICn3Eg2xr0ZEIZB/tIA=",
+    "strip_prefix": "aws-c-cal-0.6.9",
+    "overlay": {
+        "BUILD.bazel": "sha256-9QSEH76e1KZp+qgpN80oYclG3xTagzmDxGxzXNzq2/k="
+    }
+}

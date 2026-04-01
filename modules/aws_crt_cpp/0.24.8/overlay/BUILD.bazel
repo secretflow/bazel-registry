@@ -1,0 +1,54 @@
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])
+
+cc_library(
+    name = "aws_crt_cpp",
+    srcs = glob([
+        "source/*.cpp",
+        "source/auth/*.cpp",
+        "source/crypto/*.cpp",
+        "source/io/*.cpp",
+        "source/iot/*.cpp",
+        "source/mqtt/*.cpp",
+        "source/http/*.cpp",
+        "source/endpoints/*.cpp",
+        "source/external/*.cpp",
+    ]),
+    hdrs = glob([
+        "include/aws/crt/*.h",
+        "include/aws/crt/auth/*.h",
+        "include/aws/crt/crypto/*.h",
+        "include/aws/crt/io/*.h",
+        "include/aws/iot/*.h",
+        "include/aws/crt/mqtt/*.h",
+        "include/aws/crt/mqtt/private/*.h",
+        "include/aws/crt/http/*.h",
+        "include/aws/crt/endpoints/*.h",
+        "include/aws/crt/external/*.h",
+    ]) + [
+        ":generate_config_h",
+    ],
+    includes = [
+        "generated/include",
+        "include",
+    ],
+    deps = [
+        "@aws_c_auth",
+        "@aws_c_cal",
+        "@aws_c_common",
+        "@aws_c_event_stream",
+        "@aws_c_http",
+        "@aws_c_io",
+        "@aws_c_mqtt",
+        "@aws_c_s3",
+        "@aws_checksums",
+    ],
+)
+
+genrule(
+    name = "generate_config_h",
+    srcs = ["include/aws/crt/Config.h.in"],
+    outs = ["include/aws/crt/Config.h"],
+    cmd = "sed 's/@ONLY/@/' < $< > $@",
+)

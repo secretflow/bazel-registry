@@ -1,0 +1,21 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+
+cc_library(
+    name = "aws_c_http",
+    srcs = glob([
+        "source/*.c",
+    ]),
+    hdrs = glob([
+        "include/aws/http/*.h",
+        "include/aws/http/private/*.h",
+        "include/aws/http/private/*.def",
+    ]),
+    includes = [
+        "include",
+    ],
+    deps = [
+        "@aws_c_compression",
+        "@aws_c_io",
+    ],
+)

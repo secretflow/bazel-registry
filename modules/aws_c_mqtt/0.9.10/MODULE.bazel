@@ -1,0 +1,8 @@
+module(
+    name = "aws_c_mqtt",
+    version = "0.9.10",
+    compatibility_level = 1,
+)
+
+bazel_dep(name = "aws_c_common", version = "0.9.10")
+bazel_dep(name = "aws_c_http", version = "0.7.14")

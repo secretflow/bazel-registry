@@ -1,0 +1,26 @@
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])
+
+cc_library(
+    name = "aws_c_mqtt",
+    srcs = glob([
+        "source/*.c",
+        "source/v5/*.c",
+    ]),
+    hdrs = glob([
+        "include/aws/mqtt/*.h",
+        "include/aws/mqtt/v5/*.h",
+        "include/aws/mqtt/private/*.h",
+        "include/aws/mqtt/private/v5/*.h",
+    ]),
+    defines = [
+        "AWS_MQTT_WITH_WEBSOCKETS",
+    ],
+    includes = [
+        "include",
+    ],
+    deps = [
+        "@aws_c_http",
+    ],
+)

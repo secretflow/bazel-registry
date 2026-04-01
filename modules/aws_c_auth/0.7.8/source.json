@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-auth/archive/v0.7.8.tar.gz",
+    "integrity": "sha256-XbirkSYrXAVeNjTyydwrwaMoXC3VUT/cr8s+eUaNx94=",
+    "strip_prefix": "aws-c-auth-0.7.8",
+    "overlay": {
+        "BUILD.bazel": "sha256-rCMMdXZ8iTzy6k7xN4TvCFhWaflx5eNsqbEcb8vf6a8="
+    }
+}

@@ -1,0 +1,8 @@
+diff --git a/format/Flight.proto b/cpp/src/arrow/flight/Flight.proto
+similarity index 100%
+rename from format/Flight.proto
+rename to cpp/src/arrow/flight/Flight.proto
+diff --git a/format/FlightSql.proto b/cpp/src/arrow/flight/sql/FlightSql.proto
+similarity index 100%
+rename from format/FlightSql.proto
+rename to cpp/src/arrow/flight/sql/FlightSql.proto

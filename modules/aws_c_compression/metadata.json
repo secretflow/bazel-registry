@@ -1,0 +1,11 @@
+{
+    "homepage": "https://github.com/awslabs/aws-c-compression",
+    "maintainers": [],
+    "repository": [
+        "github:awslabs/aws-c-compression"
+    ],
+    "versions": [
+        "0.2.17"
+    ],
+    "yanked_versions": {}
+}

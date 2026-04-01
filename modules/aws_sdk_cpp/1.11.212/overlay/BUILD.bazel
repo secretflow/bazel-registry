@@ -1,0 +1,155 @@
+# Copyright 2024 Ant Group Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Description:
+#   AWS C++ SDK 1.11.212
+#   Note: In SDK >= 1.11.x, core is under src/, generated libs under generated/src/
+
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])
+
+cc_library(
+    name = "core",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": glob([
+            "src/aws-cpp-sdk-core/source/platform/windows/*.cpp",
+        ]),
+        "//conditions:default": glob([
+            "src/aws-cpp-sdk-core/source/platform/linux-shared/*.cpp",
+        ]),
+    }) + glob(
+        [
+            "src/aws-cpp-sdk-core/source/**/*.cpp",
+        ],
+        exclude = [
+            "src/aws-cpp-sdk-core/source/platform/windows/**",
+            "src/aws-cpp-sdk-core/source/platform/android/**",
+            "src/aws-cpp-sdk-core/source/platform/linux-shared/**",
+            "src/aws-cpp-sdk-core/source/http/windows/**",
+            "src/aws-cpp-sdk-core/source/net/windows/**",
+            "src/aws-cpp-sdk-core/source/net/linux-shared/**",
+            "src/aws-cpp-sdk-core/source/utils/crypto/bcrypt/**",
+            "src/aws-cpp-sdk-core/source/utils/crypto/commoncrypto/**",
+            "src/aws-cpp-sdk-core/source/smithy/tracing/impl/opentelemetry/**",
+        ],
+    ),
+    hdrs = glob([
+        "src/aws-cpp-sdk-core/include/**/*.h",
+    ]) + [":SDKConfig_h"],
+    copts = [
+        "-DENABLE_CURL_CLIENT",
+        "-DENABLE_OPENSSL_ENCRYPTION",
+    ],
+    includes = [
+        "src/aws-cpp-sdk-core/include",
+        "generated/include",
+    ],
+    linkopts = select({
+        "@bazel_tools//src/conditions:windows": [
+            "-DEFAULTLIB:userenv.lib",
+            "-DEFAULTLIB:version.lib",
+        ],
+        "//conditions:default": [],
+    }),
+    deps = [
+        "@aws_c_event_stream",
+        "@aws_crt_cpp",
+        "@curl//:curl",
+        "@openssl",
+    ],
+)
+
+cc_library(
+    name = "s3",
+    srcs = glob([
+        "generated/src/aws-cpp-sdk-s3/source/*.cpp",
+        "generated/src/aws-cpp-sdk-s3/source/model/*.cpp",
+    ]),
+    hdrs = glob([
+        "generated/src/aws-cpp-sdk-s3/include/aws/s3/*.h",
+        "generated/src/aws-cpp-sdk-s3/include/aws/s3/model/*.h",
+    ]),
+    includes = [
+        "generated/src/aws-cpp-sdk-s3/include",
+    ],
+    deps = [
+        ":core",
+    ],
+)
+
+cc_library(
+    name = "cognito_identity",
+    srcs = glob([
+        "generated/src/aws-cpp-sdk-cognito-identity/source/*.cpp",
+        "generated/src/aws-cpp-sdk-cognito-identity/source/model/*.cpp",
+    ]),
+    hdrs = glob([
+        "generated/src/aws-cpp-sdk-cognito-identity/include/aws/cognito-identity/*.h",
+        "generated/src/aws-cpp-sdk-cognito-identity/include/aws/cognito-identity/model/*.h",
+    ]),
+    includes = ["generated/src/aws-cpp-sdk-cognito-identity/include"],
+    deps = [
+        ":core",
+    ],
+)
+
+cc_library(
+    name = "sts",
+    srcs = glob([
+        "generated/src/aws-cpp-sdk-sts/source/*.cpp",
+        "generated/src/aws-cpp-sdk-sts/source/model/*.cpp",
+    ]),
+    hdrs = glob([
+        "generated/src/aws-cpp-sdk-sts/include/aws/sts/*.h",
+        "generated/src/aws-cpp-sdk-sts/include/aws/sts/model/*.h",
+    ]),
+    includes = ["generated/src/aws-cpp-sdk-sts/include"],
+    deps = [
+        ":core",
+    ],
+)
+
+cc_library(
+    name = "identity_management",
+    srcs = glob([
+        "src/aws-cpp-sdk-identity-management/source/auth/*.cpp",
+    ]),
+    hdrs = glob([
+        "src/aws-cpp-sdk-identity-management/include/aws/identity-management/*.h",
+        "src/aws-cpp-sdk-identity-management/include/aws/identity-management/auth/*.h",
+    ]),
+    includes = [
+        "src/aws-cpp-sdk-identity-management/include",
+    ],
+    deps = [
+        ":cognito_identity",
+        ":core",
+        ":sts",
+    ],
+)
+
+# https://docs.aws.amazon.com/sdk-for-cpp/v1/developer-guide/memory-management.html
+genrule(
+    name = "SDKConfig_h",
+    srcs = ["src/aws-cpp-sdk-core/include/aws/core/SDKConfig.h.in"],
+    outs = ["src/aws-cpp-sdk-core/include/aws/core/SDKConfig.h"],
+    cmd = """
+        sed -e 's/@VERSION@/1.11.212/' \
+            -e 's/#cmakedefine USE_AWS_MEMORY_MANAGEMENT/#undef USE_AWS_MEMORY_MANAGEMENT/' \
+            $< > $@
+    """,
+)

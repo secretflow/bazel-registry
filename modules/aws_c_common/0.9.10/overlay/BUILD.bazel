@@ -1,0 +1,81 @@
+# Copyright 2024 Ant Group Co., Ltd.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# Description:
+#   AWS C Common
+package(default_visibility = ["//visibility:public"])
+
+licenses(["notice"])  # Apache 2.0
+
+exports_files(["LICENSE"])
+
+cc_library(
+    name = "aws_c_common",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": glob([
+            "source/windows/*.c",
+        ]),
+        "@bazel_tools//src/conditions:darwin": glob([
+            "source/darwin/*.c",
+        ]),
+        "@bazel_tools//src/conditions:linux": glob([
+            "source/linux/*.c",
+            "source/posix/*.c",
+        ]),
+    }) + glob([
+        "source/arch/generic/*.c",
+        "source/external/*.c",
+        "source/*.c",
+    ]),
+    hdrs = glob([
+        "include/aws/common/*.h",
+        "include/aws/common/*.inl",
+        "include/aws/common/private/*.h",
+        "include/aws/common/private/*.inl",
+        "include/aws/common/external/*.h",
+        "include/aws/common/posix/*",
+        "include/aws/common/windows/*",
+    ]) + [":generate_config_h"],
+    copts = select({
+        "@bazel_tools//src/conditions:windows": [],
+        "@bazel_tools//src/conditions:darwin": [
+            "-D_POSIX_C_SOURCE=200809L",
+            "-D_XOPEN_SOURCE=500",
+            "-DAWS_AFFINITY_METHOD=0",
+        ],
+        "@bazel_tools//src/conditions:linux": [
+            "-D_POSIX_C_SOURCE=200809L",
+            "-D_XOPEN_SOURCE=500",
+            "-DAWS_AFFINITY_METHOD=0",
+        ],
+    }),
+    includes = [
+        "generated/include",
+        "include",
+        "source/private",
+    ],
+    deps = [],
+)
+
+genrule(
+    name = "generate_config_h",
+    srcs = ["include/aws/common/config.h.in"],
+    outs = ["generated/include/aws/common/config.h"],
+    cmd = """
+        sed -e 's/#cmakedefine /#define /' \
+            -e 's/#cmakedefine01 /#define /' \
+            -e 's/#cmakedefine/#undef /' \
+            $(location include/aws/common/config.h.in) > $@
+    """,
+)

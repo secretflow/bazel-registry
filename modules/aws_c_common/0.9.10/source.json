@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-common/archive/v0.9.10.tar.gz",
+    "integrity": "sha256-kqxtcYPPgg94pz90dzxnT3Q6lHxWTB6kkw4YvSBGEQg=",
+    "strip_prefix": "aws-c-common-0.9.10",
+    "overlay": {
+        "BUILD.bazel": "sha256-3aiEa+HFPIg5S9i9RQtte6tD1N6fOFq8qtnwZnI93Y0="
+    }
+}

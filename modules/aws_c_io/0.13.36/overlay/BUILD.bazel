@@ -1,0 +1,70 @@
+package(default_visibility = ["//visibility:public"])
+licenses(["notice"])
+
+cc_library(
+    name = "aws_c_io",
+    srcs = select({
+        "@bazel_tools//src/conditions:windows": glob([
+            "source/windows/*.c",
+            "source/windows/iocp/*.c",
+        ]),
+        "@bazel_tools//src/conditions:linux": glob([
+            "source/linux/*.c",
+            "source/posix/*.c",
+            "source/s2n/*.c",
+        ]),
+        "@bazel_tools//src/conditions:darwin": glob([
+            "source/bsd/*.c",
+            "source/posix/*.c",
+            "source/darwin/*.c",
+            "source/s2n/*.c",
+        ]),
+    }) + glob([
+        "source/*.c",
+    ]),
+    hdrs = glob([
+        "source/*.h",
+        "source/pkcs11/v2.40/*.h",
+        "include/aws/io/*.h",
+        "include/aws/io/uv/*.h",
+        "include/aws/testing/*.h",
+        "include/aws/io/private/*.h",
+    ]),
+    copts = [
+        "-DINTEL_NO_ITTNOTIFY_API",
+    ] + select({
+        "@bazel_tools//src/conditions:windows": [
+            "-DAWS_USE_IO_COMPLETION_PORTS",
+        ],
+        "@bazel_tools//src/conditions:linux": [
+            "-DAWS_USE_EPOLL",
+            "-DUSE_S2N",
+        ],
+        "@bazel_tools//src/conditions:darwin": [
+            "-DAWS_USE_KQUEUE",
+            "-DUSE_S2N",
+        ],
+        "//conditions:default": [],
+    }),
+    includes = [
+        "include",
+        "source",
+    ],
+    linkopts = select({
+        "@bazel_tools//src/conditions:windows": [
+            "-lSecur32",
+            "-lCrypt32",
+        ],
+        "@bazel_tools//src/conditions:darwin": [
+            "-framework",
+            "Security",
+        ],
+        "@bazel_tools//src/conditions:linux": [],
+        "//conditions:default": [],
+    }),
+    deps = [
+        "@aws_c_cal",
+        "@aws_c_common",
+        "@s2n_tls",
+    ],
+)

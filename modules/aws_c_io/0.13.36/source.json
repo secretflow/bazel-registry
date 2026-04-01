@@ -1,0 +1,8 @@
+{
+    "url": "https://github.com/awslabs/aws-c-io/archive/v0.13.36.tar.gz",
+    "integrity": "sha256-31imAJWKfc40qHGuFFyCmnIeInKjQpZBZMJhJX52ZFM=",
+    "strip_prefix": "aws-c-io-0.13.36",
+    "overlay": {
+        "BUILD.bazel": "sha256-NDs4rMX3kU801KFVxOO4SDgixtwLSdo9BRU+ggBNzbM="
+    }
+}
