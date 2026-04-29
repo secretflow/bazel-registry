@@ -24,13 +24,18 @@ cc_library(
         "-DS2N_NO_PQ",
         "-DS2N_FEATURES_AVAILABLE",
         "-DS2N_STACKTRACE",
-        "-DS2N_CPUID_AVAILABLE",
         "-DS2N_FALL_THROUGH_SUPPORTED",
         "-DS2N___RESTRICT__SUPPORTED",
         "-DS2N_MADVISE_SUPPORTED",
         "-DS2N_LIBCRYPTO_SUPPORTS_EVP_RC4",
         "-DS2N_LIBCRYPTO_SUPPORTS_EVP_MD5_SHA1_HASH",
     ] + select({
+        # S2N_CPUID_AVAILABLE requires <cpuid.h> which is x86-only;
+        # enabling it on aarch64 causes compilation failure.
+        "@bazel_tools//src/conditions:linux_x86_64": [
+            "-DS2N_CPUID_AVAILABLE",
+            "-DS2N_CLONE_SUPPORTED",
+        ],
         "@bazel_tools//src/conditions:linux": [
             "-DS2N_CLONE_SUPPORTED",
         ],
