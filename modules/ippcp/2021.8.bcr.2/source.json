@@ -4,7 +4,7 @@
     "strip_prefix": "cryptography-primitives-ippcp_2021.8",
     "patches": {
         "add_build_file.patch": "sha256-HyErvDDX7fFC5noXdLWdn/rUC5tflxyNDP9pH7VPFLY=",
-        "ippcp.patch": "sha256-zdclx2YkzjPGPDyTjewzdrj2KRwbxcyaYdIiIUD0Lh4=",
+        "ippcp.patch": "sha256-PcApJGTqGqlY/O3h++BGIFOY1KX7SkY8rs+YTK6zN6A=",
         "module_dot_bazel.patch": "sha256-DTPBCTzPTeEpWIwm60KPwdGsV4+TYhx7vjkUPXtiuGY="
     },
     "patch_strip": 1
