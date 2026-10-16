@@ -1,8 +1,7 @@
 diff --git a/sources/cmake/linux/GNU8.2.0.cmake b/sources/cmake/linux/GNU8.2.0.cmake
-index 69cec786..5c5f33c2 100644
 --- a/sources/cmake/linux/GNU8.2.0.cmake
 +++ b/sources/cmake/linux/GNU8.2.0.cmake
-@@ -33,7 +33,7 @@ set(LINK_FLAG_DYNAMIC_LINUX "${LINK_FLAG_SECURITY} -nostdlib")
+@@ -33,7 +33,7 @@
  # Dynamically link lib c (libdl is for old apps)
  set(LINK_FLAG_DYNAMIC_LINUX "${LINK_FLAG_DYNAMIC_LINUX} -Wl,-call_shared,-lc")
  # Create a shared library
@@ -11,7 +10,7 @@ index 69cec786..5c5f33c2 100644
  if(${ARCH} MATCHES "ia32")
    # Tells the compiler to generate code for a specific architecture (32)
    set(LINK_FLAG_DYNAMIC_LINUX "${LINK_FLAG_DYNAMIC_LINUX} -m32")
-@@ -75,7 +75,7 @@ if ((${ARCH} MATCHES "ia32") OR (NOT NONPIC_LIB))
+@@ -75,7 +75,7 @@
  endif()
  
  # Security flag that adds compile-time and run-time checks
@@ -20,15 +19,18 @@ index 69cec786..5c5f33c2 100644
  
  if(NOT NONPIC_LIB)
    # Position Independent Execution (PIE)
-@@ -96,6 +96,8 @@ if(${ARCH} MATCHES "ia32")
+@@ -96,8 +96,10 @@
    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -m32")
  endif(${ARCH} MATCHES "ia32")
  
 +set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unknown-pragmas -Wno-missing-braces -Wno-comment -Wno-strict-aliasing -Wno-parentheses -Wno-array-parameter -Wno-stringop-overflow")
 +
  # Optimization level = 3, no-debug definition (turns off asserts), warnings=errors
- set (CMAKE_C_FLAGS_RELEASE " -O3 -DNDEBUG -Werror")
+-set (CMAKE_C_FLAGS_RELEASE " -O3 -DNDEBUG -Werror")
++set (CMAKE_C_FLAGS_RELEASE " -O3 -DNDEBUG -Werror -Wno-error")
  
+ set(w7_opt "${w7_opt} -march=pentium4 -msse2")
+ set(s8_opt "${s8_opt} -march=core2 -mssse3")
 diff --git a/sources/cmake/macosx/AppleClang11.0.0.cmake b/sources/cmake/macosx/AppleClang11.0.0.cmake
 index 9fa2acf1..9dd793ed 100644
 --- a/sources/cmake/macosx/AppleClang11.0.0.cmake
